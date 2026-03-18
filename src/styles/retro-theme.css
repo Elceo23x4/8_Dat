@@ -1,0 +1,134 @@
+:root {
+    /* Core Palette - Early 1900s Deep Browns & Golds */
+    --mahogany-deep: #2C1810;
+    --mahogany: #3E2723;
+    --mahogany-light: #5D4037;
+    --gold-burnished: #D4AF37;
+    --gold-antique: #B5A642;
+    --gold-pale: #F4E8C1;
+    --bronze: #8B7355;
+    --bronze-dark: #5C4A3A;
+    --sepia: #704214;
+    --parchment: #F5E6D3;
+    --forest-green: #2F4538;
+    
+    /* Lighting & Effects */
+    --lamp-glow: rgba(212, 175, 55, 0.3);
+    --shadow-deep: rgba(0, 0, 0, 0.8);
+    --glass-reflection: rgba(255, 255, 255, 0.1);
+    
+    /* Typography */
+    --font-display: 'Cinzel', serif;
+    --font-body: 'Cormorant Garamond', serif;
+    --font-terminal: 'Space Mono', monospace;
+    
+    /* Z-Index Layers */
+    --z-background: 0;
+    --z-furniture: 10;
+    --z-objects: 20;
+    --z-particles: 30;
+    --z-modals: 100;
+    --z-overlay: 200;
+}
+
+/* Procedural Wood Texture via CSS */
+.wood-texture {
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            var(--mahogany) 0px,
+            var(--mahogany-deep) 2px,
+            var(--mahogany) 4px
+        ),
+        linear-gradient(180deg, var(--mahogany-light), var(--mahogany-deep));
+    background-blend-mode: multiply;
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.8);
+}
+
+/* Procedural Gold Metallic */
+.gold-metallic {
+    background: linear-gradient(
+        135deg,
+        #B8860B 0%,
+        #FFD700 25%,
+        #D4AF37 50%,
+        #B8860B 75%,
+        #8B6914 100%
+    );
+    background-size: 200% 200%;
+    animation: goldShimmer 8s ease infinite;
+    box-shadow: 
+        inset 0 2px 4px rgba(255,255,255,0.4),
+        inset 0 -2px 4px rgba(0,0,0,0.4),
+        0 4px 8px rgba(0,0,0,0.6);
+}
+
+@keyframes goldShimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Procedural Glass Top */
+.glass-top {
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.2) 0%,
+        rgba(255,255,255,0.05) 50%,
+        rgba(255,255,255,0.1) 100%
+    );
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 
+        0 8px 32px rgba(0,0,0,0.3),
+        inset 0 0 20px rgba(255,255,255,0.1);
+}
+
+/* CRT Scanline Effect for Computer */
+.crt-screen {
+    position: relative;
+    background: #0f380f;
+    overflow: hidden;
+}
+.crt-screen::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.25) 50%
+    );
+    background-size: 100% 4px;
+    z-index: 2;
+    pointer-events: none;
+    animation: scanline 10s linear infinite;
+}
+@keyframes scanline {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(10px); }
+}
+
+/* Room Layout Grid */
+.room-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 3fr 1fr;
+    height: 100vh;
+    width: 100vw;
+    background: radial-gradient(
+        ellipse at center,
+        var(--mahogany-light) 0%,
+        var(--mahogany-deep) 100%
+    );
+    position: relative;
+    overflow: hidden;
+}
+
+/* Mobile Adaptations */
+@media (max-width: 768px) {
+    .room-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        overflow-y: auto;
+    }
+}
