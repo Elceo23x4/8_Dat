@@ -2,7 +2,6 @@
   "name": "agro-vintage-portfolio",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://elceo23x4.github.io/8_Dat",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -12,18 +11,19 @@
     "@react-three/cannon": "^6.6.0",
     "three": "^0.158.0",
     "styled-components": "^6.1.0",
-    "gh-pages": "^6.1.1"
+    "gsap": "^3.12.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "analyze": "npm run build && npx serve -s build -l 3000"
   },
   "eslintConfig": {
-    "extends": ["react-app"]
+    "extends": [
+      "react-app"
+    ]
   },
   "browserslist": {
     "production": [
