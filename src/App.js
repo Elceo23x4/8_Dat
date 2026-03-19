@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Physics } from '@react-three/cannon';
+import { HashRouter } from 'react-router-dom';
 import ExperienceGate from './components/ExperienceGate';
 import RetroRoom from './components/RetroRoom';
 import WarriorCharacter from './components/WarriorCharacter';
@@ -14,6 +15,11 @@ import WhatsAppModal from './components/WhatsAppModal';
 import FluidSimulation from './components/FluidSimulation';
 import './styles/retro-theme.css';
 
+// GitHub Pages base path handler
+const getBasePath = () => {
+  return process.env.NODE_ENV === 'production' ? '/8_Dat' : '';
+};
+
 export default function App() {
     const [entered, setEntered] = useState(false);
     const [activeModal, setActiveModal] = useState(null);
@@ -21,12 +27,9 @@ export default function App() {
     const audioRef = useRef(null);
 
     useEffect(() => {
-        if (entered && audioRef.current) {
-            audioRef.current.volume = 0.3;
-            audioRef.current.play().catch(e => console.log("Audio autoplay blocked"));
-        }
-    }, [entered]);
-
+        document.documentElement.style.setProperty('--base-path', getBasePath());
+    }, []);
+        
     const handleEnter = () => {
         setEntered(true);
         document.getElementById('loading').style.opacity = '0';
