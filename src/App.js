@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Physics } from '@react-three/cannon';
-import { HashRouter } from 'react-router-dom';
 import ExperienceGate from './components/ExperienceGate';
 import RetroRoom from './components/RetroRoom';
 import WarriorCharacter from './components/WarriorCharacter';
