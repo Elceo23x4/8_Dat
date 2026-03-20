@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
-import TerminalEmulator from './TerminalEmulator';
+// import TerminalEmulator from './TerminalEmulator';
 
 const screenGlow = keyframes`
     0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 0, 0.2), inset 0 0 20px rgba(0, 255, 0, 0.1); }
