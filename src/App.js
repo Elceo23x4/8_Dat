@@ -16,7 +16,7 @@ import './styles/retro-theme.css';
 
 // GitHub Pages base path handler
 const getBasePath = () => {
-  return process.env.NODE_ENV === 'production' ? '/8_Dat' : '';
+  return process.env.NODE_ENV === 'production' ? '/8_Dat/public' : '';
 };
 
 export default function App() {
