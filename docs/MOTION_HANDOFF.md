@@ -43,7 +43,7 @@ The consultant and hand are vector illustration layers. A fully photorealistic w
 | 0.84–0.94 | Open the door; move through it; retire the consultant layer. |
 | 0.94–1.00 | Resolve into the interior paper tone and crossfade into investigation. |
 
-The current procedural camera completes its full orbit during the first 62% of hero scroll, then approaches the lobby. For a film, time-remap the exported sequence to the table above if the film's orbit begins later. No mouse-led camera movement should be baked into footage: the film has one authored camera path. Any cursor depth effect should be a small compositing transform over the complete frame.
+The current procedural camera completes its full orbit during the first 62% of hero scroll, then approaches the lobby. For a film, time-remap the exported sequence to the table above if the film's orbit begins later. No mouse-led camera movement should be baked into footage: the film has one authored camera path. The film adapter adds a bounded cursor compositing transform (±5px horizontal, ±3px vertical) with 2% overscan; do not bake a second pointer effect into the film.
 
 ### Installation of the film
 
