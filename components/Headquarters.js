@@ -1,5 +1,5 @@
 'use client';
-import {useEffect,useRef,useState} from 'react';
+import {useEffect,useRef,useState,useCallback} from 'react';
 import * as THREE from 'three';
 import ArrivalFilm from './ArrivalFilm';
 import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
@@ -10,6 +10,7 @@ const filmSource=/^\/media\/[a-zA-Z0-9/_-]+\.(mp4|webm)$/.test(configuredFilm)?c
 // Authored architectural geometry. No provider mesh, animation clip or paid API.
 export default function Headquarters({progressRef,reduced}) {
  const host=useRef(null), live=useRef({pointer:0}), [failed,setFailed]=useState(false), [filmFailed,setFilmFailed]=useState(false);
+ const onFilmFailure=useCallback(()=>setFilmFailed(true),[]);
  useEffect(()=>{
   if(reduced||(filmSource&&!filmFailed)||failed)return;
   const el=host.current; let renderer;
@@ -73,5 +74,5 @@ export default function Headquarters({progressRef,reduced}) {
   });
   return()=>{disposed=true;renderer.setAnimationLoop(null);observer.disconnect();ro.disconnect();window.removeEventListener('pointermove',pointer);renderer.domElement.removeEventListener('webglcontextlost',lose);scene.traverse(o=>{if(o.geometry&&o.geometry!==geometry)o.geometry.dispose();});geometry.dispose();environment.dispose();Object.values(materials).forEach(m=>m.dispose());signMat.dispose();tex.dispose();renderer.dispose();renderer.forceContextLoss();renderer.domElement.remove();};
  },[reduced,progressRef,failed,filmFailed]);
- return <div className="architecture" aria-hidden="true"><img className="architectural-poster" src={assetURL('/art/headquarters-poster.webp')} alt=""/>{filmSource&&!filmFailed?<ArrivalFilm src={assetURL(filmSource)} progressRef={progressRef} reduced={reduced} onFailure={()=>setFilmFailed(true)}/>:!reduced&&!failed&&<div className="webgl-host" ref={host}/>}</div>;
+ return <div className="architecture" aria-hidden="true"><img className="architectural-poster" src={assetURL('/art/headquarters-poster.webp')} alt=""/>{filmSource&&!filmFailed?<ArrivalFilm src={assetURL(filmSource)} progressRef={progressRef} reduced={reduced} onFailure={onFilmFailure}/>:!reduced&&!failed&&<div className="webgl-host" ref={host}/>}</div>;
 }
