@@ -11,9 +11,10 @@ npm ci
 npm run dev
 npm test
 npm run build
+npm start
 ```
 
-`next build` exports the website into `out/`. Serve that folder with a static host, or import the repository into Vercel. No backend, database, analytics or form storage is required. This PR does not deploy or merge itself.
+`npm start` serves the export locally at `http://127.0.0.1:3001`. `next build` exports the website into `out/`. Serve that folder with a static host, or import the repository into Vercel. No backend, database, analytics or form storage is required. This PR does not deploy or merge itself.
 
 ## Contact configuration
 
