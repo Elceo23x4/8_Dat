@@ -1,0 +1,15 @@
+{
+  "name": "8dat-arrival",
+  "surface": "scroll-led website, decorative non-navigable Three.js scene",
+  "units": "metres",
+  "purpose": "Introduce a consultant arriving at a headquarters and transition into operational investigation",
+  "hero": {"name": "headquarters", "dimensions": [18, 35, 11], "origin": [0, 0, 0]},
+  "arrival": {"clearWidth": 6, "clearHeight": 4, "depth": 11, "destination": "backed illuminated lobby", "doors": "two sliding glass leaves"},
+  "symmetry": {"architecture": "bilateral", "exception": "production-camera offset and surrounding city rhythm"},
+  "camera": {"fov": 43, "near": 0.1, "far": 240, "orbitRadians": 6.283185307179586, "orbitRadius": 44, "arrivalRadius": 3},
+  "input": {"primary": "native document scroll", "secondary": "bounded pointer parallax", "keyboard": "native anchors and page scroll", "touch": "native scroll"},
+  "renderBudget": {"pixelRatioMaximum": 1.5, "shadowMaps": false, "postProcessing": false, "offscreenPause": true, "hiddenTabPause": true, "targetFrameRate": 60, "measuredHardwareFrameRate": null},
+  "paidProviders": {"meshy": "not used", "tripo": "not used", "creditsAuthorized": 0},
+  "review": {"blender": "not used", "gameDevCLI": "unavailable", "humanFunctionApproval": null, "humanFormApproval": null, "humanRuntimeApproval": null},
+  "fallback": "generated architectural poster with accessible HTML narrative; no mandatory WebGL"
+}

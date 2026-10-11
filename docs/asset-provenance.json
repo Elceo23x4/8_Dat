@@ -1,0 +1,7 @@
+{
+  "generator": "Built-in image_gen",
+  "asset": "public/art/headquarters-poster.webp",
+  "sha256": "071009a375f153658ef0d64257fd815d29567e042cb6ebdfc572ab07a249dfd8",
+  "usage": "Architectural realism target, arrival video poster, no-WebGL and reduced-motion fallback",
+  "prompt": "Use case: stylized-concept. Asset type: cinematic architectural website video poster, widescreen 16:9. A sophisticated realistic 3D architectural visualization of a modern glass skyscraper creative agency headquarters on a clean tower-lined contemporary Chinese city street. Warm coffee and pale cream architectural tones, near-black metal frames, restrained turquoise accents in glass. Ground-level three-quarter camera, complete headquarters centered toward the right, beautiful glass entry portal and visible welcoming lobby beyond. Stone pavement leading from bottom left to door. Early morning overcast editorial light, physically believable reflections, architectural depth, subtly tactile film grain. No people, no cars, no typography, no logos, no watermark, no UI. Leave upper-left negative space for HTML editorial headlines. High-end international creative studio quality, avoid neon cyberpunk. Intended as future image-to-video first frame; all architecture must remain coherent."
+}
