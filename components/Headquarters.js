@@ -20,7 +20,7 @@ export default function Headquarters({progressRef,reduced}) {
   renderer.setClearColor('#e7e1d7',1); el.appendChild(renderer.domElement);
   const scene=new THREE.Scene(); scene.fog=new THREE.Fog('#e7e1d7',55,150);
   const pmrem=new THREE.PMREMGenerator(renderer);const room=new RoomEnvironment();const environment=pmrem.fromScene(room,.04);scene.environment=environment.texture;room.dispose();pmrem.dispose();
-  const camera=new THREE.PerspectiveCamera(43,1,.1,240);camera.position.set(0,14,44);camera.lookAt(-5,13,0);
+  const camera=new THREE.PerspectiveCamera(43,1,.1,240);camera.position.set(0,20,62);camera.lookAt(-5,17,0);
   scene.add(new THREE.HemisphereLight('#fff6e6','#4e4036',3));
   const sun=new THREE.DirectionalLight('#ffedce',4);sun.position.set(-20,40,20);scene.add(sun);
   const tower=new THREE.Group();scene.add(tower);
@@ -60,10 +60,10 @@ export default function Headquarters({progressRef,reduced}) {
   const target=new THREE.Vector3();
   renderer.setAnimationLoop(()=>{
    if(disposed||!visible||document.hidden)return;
-   const p=progressRef.current;const orbit=Math.min(p/.62,1)*Math.PI*2;
-   const approach=THREE.MathUtils.smoothstep(p,.64,1);const radius=THREE.MathUtils.lerp(44,3,approach);
-   target.set(Math.sin(orbit)*radius+live.current.pointer*.7,THREE.MathUtils.lerp(14,2.2,approach),Math.cos(orbit)*radius);
-   camera.position.lerp(target,.12);camera.lookAt(THREE.MathUtils.lerp(-5,0,Math.min(p*4,1)),THREE.MathUtils.lerp(13,2.1,approach),0);
+   const p=progressRef.current;el.style.opacity=THREE.MathUtils.smoothstep(p,.04,.14);const orbit=Math.min(p/.62,1)*Math.PI*2;
+   const approach=THREE.MathUtils.smoothstep(p,.64,1);const radius=THREE.MathUtils.lerp(62,3,approach);
+   target.set(Math.sin(orbit)*radius+live.current.pointer*.7,THREE.MathUtils.lerp(20,2.2,approach),Math.cos(orbit)*radius);
+   camera.position.lerp(target,.12);camera.lookAt(THREE.MathUtils.lerp(-5,0,Math.min(p*4,1)),THREE.MathUtils.lerp(17,2.1,approach),0);
    const open=THREE.MathUtils.smoothstep(p,.88,.98);doorL.position.x=-.78-open*1.45;doorR.position.x=.78+open*1.45;
    renderer.render(scene,camera);
   });

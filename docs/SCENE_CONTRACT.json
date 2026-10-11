@@ -32,8 +32,10 @@
     "near": 0.1,
     "far": 240,
     "orbitRadians": 6.283185307179586,
-    "orbitRadius": 44,
-    "arrivalRadius": 3
+    "orbitRadius": 62,
+    "arrivalRadius": 3,
+    "establishingEyeHeight": 20,
+    "establishingLookHeight": 17
   },
   "input": {
     "primary": "native document scroll",
