@@ -1,7 +1,7 @@
 'use client';
 import {useEffect,useRef,useState} from 'react';
 import dynamic from 'next/dynamic';
-import {motion,MotionConfig,useReducedMotion} from 'motion/react';
+import {motion,MotionConfig} from 'motion/react';
 import {gsap} from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import {Consultant,Hand,Truck,Phone,Bucket} from './Illustrations';
@@ -21,8 +21,9 @@ function Label({number,children}){return <p className="chapter"><span>{number}</
 function WorkArt({type}){return <div className={`work-art ${type}`} aria-hidden="true">{type==='identity'?<><div className="identity-mark">8<span>↗</span></div><div className="swatches"><i/><i/><i/></div><p>FORM / FEELING / FUNCTION</p></>:type==='billboard'?<><div className="billboard-panel"><small>A SAMPLE CAMPAIGN</small><b>BIG IDEAS.<br/>REAL WORLD.</b><span>8 DAT — MAKE YOUR MOVE ↗</span></div><div className="billboard-legs"/></>:type==='website'?<div className="browser-art"><div className="browser-top">● ● ● <span>your next chapter</span></div><div className="browser-layout"><small>BUILT AROUND YOU</small><b>Less friction.<br/>More possibility.</b><span>LET’S BUILD ↗</span><i/></div></div>:type==='campaign'?<><div className="campaign-a"><small>YOUR NEXT MOVE</small><b>IT STARTS<br/>WITH YOU.</b><span>DISCOVER ↗</span></div><div className="campaign-b">MAKE<br/>IT<br/><em>MATTER.</em></div></>:<><div className="doc-book">THE<br/>WAY<br/>WE<br/><em>WORK.</em><small>OPERATIONS PLAYBOOK / 8 DAT</small></div><div className="doc-sheet"><span>01 — TEAM</span><span>02 — PROCESS</span><span>03 — QUALITY</span><span>04 — GROWTH</span></div></>}</div>;}
 
 export default function Story(){
- const root=useRef(null),heroProgress=useRef(0),[manualReduce,setManualReduce]=useState(false),[entered,setEntered]=useState(false),[status,setStatus]=useState(''),[currentWork,setCurrentWork]=useState(0),[mounted,setMounted]=useState(false),[mobileLayout,setMobileLayout]=useState(false);
- const osReduce=useReducedMotion();const reduced=(mounted&&!!osReduce)||manualReduce;
+ const root=useRef(null),heroProgress=useRef(0),[manualReduce,setManualReduce]=useState(false),[entered,setEntered]=useState(false),[status,setStatus]=useState(''),[currentWork,setCurrentWork]=useState(0),[mounted,setMounted]=useState(false),[mobileLayout,setMobileLayout]=useState(false),[osReduce,setOsReduce]=useState(false);
+ const reduced=(mounted&&!!osReduce)||manualReduce;
+ useEffect(()=>{const query=window.matchMedia('(prefers-reduced-motion: reduce)');const change=()=>setOsReduce(query.matches);change();query.addEventListener('change',change);return()=>query.removeEventListener('change',change);},[]);
  useEffect(()=>{setMounted(true);try{setManualReduce(localStorage.getItem('8dat-reduced')==='true');}catch{}},[]);
  useEffect(()=>{const query=window.matchMedia('(max-width: 700px)');const change=()=>setMobileLayout(query.matches);change();query.addEventListener('change',change);return()=>query.removeEventListener('change',change);},[]);
  useEffect(()=>{const rail=root.current.querySelector('.work-rail');const sync=()=>{const cards=[...rail.children];let best=0, distance=Infinity;cards.forEach((card,i)=>{const d=Math.abs(card.offsetLeft-rail.scrollLeft-rail.offsetLeft);if(d<distance){best=i;distance=d;}});if(rail.scrollLeft<10)best=0;else if(rail.scrollLeft>=rail.scrollWidth-rail.clientWidth-10)best=cards.length-1;setCurrentWork(best);};rail.addEventListener('scroll',sync,{passive:true});return()=>rail.removeEventListener('scroll',sync);},[]);
