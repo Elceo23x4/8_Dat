@@ -8,3 +8,6 @@ test-results/
 
 /playwright-report/
 /test-results/
+
+/media-playwright-report/
+/media-test-results/
