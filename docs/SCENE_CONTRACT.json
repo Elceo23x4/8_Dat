@@ -52,7 +52,8 @@
     "targetFrameRate": 60,
     "measuredHardwareFrameRate": null,
     "staticGeometry": "Instanced by material, one shared unit box",
-    "environment": "PMREM studio illumination"
+    "environment": "PMREM studio illumination",
+    "idleRender": "No draw when scroll, pointer and viewport are unchanged"
   },
   "paidProviders": {
     "meshy": "not used",

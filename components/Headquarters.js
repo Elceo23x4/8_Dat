@@ -53,17 +53,21 @@ export default function Headquarters({progressRef,reduced}) {
   for(const [material,matrices] of staticBoxes){const batch=new THREE.InstancedMesh(geometry,material,matrices.length);matrices.forEach((matrix,i)=>batch.setMatrixAt(i,matrix));batch.computeBoundingSphere();scene.add(batch);}
   let visible=true, disposed=false;
   const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;},{rootMargin:'100px'});observer.observe(el);
-  const resize=()=>{const r=el.getBoundingClientRect();renderer.setSize(r.width,r.height);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();};
+  let needsFrame=true,lastProgress=-1,lastPointer=null;
+  const resize=()=>{needsFrame=true;const r=el.getBoundingClientRect();renderer.setSize(r.width,r.height);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();};
   const ro=new ResizeObserver(resize);ro.observe(el);resize();
   const pointer=e=>{live.current.pointer=(e.clientX/window.innerWidth-.5)*2;};window.addEventListener('pointermove',pointer,{passive:true});
   const lose=e=>{e.preventDefault();setFailed(true);};renderer.domElement.addEventListener('webglcontextlost',lose);
   const target=new THREE.Vector3();
   renderer.setAnimationLoop(()=>{
    if(disposed||!visible||document.hidden)return;
-   const p=progressRef.current;el.style.opacity=THREE.MathUtils.smoothstep(p,.04,.14);const orbit=Math.min(p/.62,1)*Math.PI*2;
+   const p=progressRef.current;
+   if(!needsFrame&&Math.abs(p-lastProgress)<.00001&&live.current.pointer===lastPointer)return;
+   needsFrame=false;lastProgress=p;lastPointer=live.current.pointer;
+   el.style.opacity=THREE.MathUtils.smoothstep(p,.04,.14);const orbit=Math.min(p/.62,1)*Math.PI*2;
    const approach=THREE.MathUtils.smoothstep(p,.64,1);const radius=THREE.MathUtils.lerp(62,3,approach);
    target.set(Math.sin(orbit)*radius+live.current.pointer*.7,THREE.MathUtils.lerp(20,2.2,approach),Math.cos(orbit)*radius);
-   camera.position.lerp(target,.12);camera.lookAt(THREE.MathUtils.lerp(-5,0,Math.min(p*4,1)),THREE.MathUtils.lerp(17,2.1,approach),0);
+   camera.position.copy(target);camera.lookAt(THREE.MathUtils.lerp(-5,0,Math.min(p*4,1)),THREE.MathUtils.lerp(17,2.1,approach),0);
    const open=THREE.MathUtils.smoothstep(p,.88,.98);doorL.position.x=-.78-open*1.45;doorR.position.x=.78+open*1.45;
    renderer.render(scene,camera);
   });

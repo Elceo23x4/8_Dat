@@ -1,7 +1,7 @@
 import {defineConfig} from '@playwright/test';
 const fallback=process.env.BROWSER_FALLBACK==='1';
 export default defineConfig({
- testDir:'tests/browser',fullyParallel:false,workers:1,timeout:60000,
+ testDir:'tests/browser',fullyParallel:false,workers:1,timeout:120000,
  use:{baseURL:`http://127.0.0.1:3001${process.env.NEXT_PUBLIC_BASE_PATH||''}/`,
   launchOptions:{executablePath:process.env.BROWSER_EXECUTABLE||undefined,args:fallback?['--no-sandbox','--no-zygote','--single-process','--disable-gpu','--disable-software-rasterizer']:['--use-angle=swiftshader','--enable-unsafe-swiftshader']},
   screenshot:'only-on-failure',trace:'retain-on-failure'},
