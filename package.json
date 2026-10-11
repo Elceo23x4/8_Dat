@@ -1,43 +1,22 @@
 {
-  "name": "8_Dat",
-  "homepage": "https://elceo23x4.github.io/8_Dat",
-  "version": "1.0.0",
+  "name": "8dat-story-portfolio",
+  "version": "2.0.0",
   "private": true,
-  "dependencies": {
-    "@react-three/cannon": "^6.6.0",
-    "@react-three/drei": "^9.122.0",
-    "@react-three/fiber": "^8.18.0",
-    "gsap": "^3.12.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "styled-components": "^6.3.12",
-    "three": "^0.160.1"
-  },
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "analyze": "npm run build && npx serve -s build -l 3000",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "node --test tests/*.test.mjs"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "gsap": "3.15.0",
+    "motion": "14.1.0",
+    "next": "16.4.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "tailwindcss": "4.3.3",
+    "three": "0.186.1"
   }
 }

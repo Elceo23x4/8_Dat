@@ -1,0 +1,230 @@
+[
+  {
+    "name": "desktop",
+    "errors": [],
+    "chapters": [
+      {
+        "selector": ".investigation",
+        "scroll": 1440,
+        "width": 1440,
+        "canvas": 0
+      },
+      {
+        "selector": ".workflow",
+        "scroll": 1440,
+        "width": 1440,
+        "canvas": 0
+      },
+      {
+        "selector": ".creative",
+        "scroll": 1440,
+        "width": 1440,
+        "canvas": 0
+      },
+      {
+        "selector": ".delivery",
+        "scroll": 1440,
+        "width": 1440,
+        "canvas": 0
+      },
+      {
+        "selector": ".skills",
+        "scroll": 1440,
+        "width": 1440,
+        "canvas": 0
+      },
+      {
+        "selector": ".marketing",
+        "scroll": 1440,
+        "width": 1440,
+        "canvas": 0
+      },
+      {
+        "selector": ".contact-scene",
+        "scroll": 1440,
+        "width": 1440,
+        "canvas": 0
+      },
+      {
+        "selector": "footer",
+        "scroll": 1440,
+        "width": 1440,
+        "canvas": 0
+      }
+    ],
+    "contactStatus": "WhatsApp is being configured. Please email enquiry@8dat.work with your project brief.",
+    "lastCounter": "5 / 5",
+    "canvasAfterToggle": 0
+  },
+  {
+    "name": "mobile",
+    "errors": [],
+    "chapters": [
+      {
+        "selector": ".investigation",
+        "scroll": 390,
+        "width": 390,
+        "canvas": 0
+      },
+      {
+        "selector": ".workflow",
+        "scroll": 390,
+        "width": 390,
+        "canvas": 0
+      },
+      {
+        "selector": ".creative",
+        "scroll": 390,
+        "width": 390,
+        "canvas": 0
+      },
+      {
+        "selector": ".delivery",
+        "scroll": 390,
+        "width": 390,
+        "canvas": 0
+      },
+      {
+        "selector": ".skills",
+        "scroll": 390,
+        "width": 390,
+        "canvas": 0
+      },
+      {
+        "selector": ".marketing",
+        "scroll": 390,
+        "width": 390,
+        "canvas": 0
+      },
+      {
+        "selector": ".contact-scene",
+        "scroll": 390,
+        "width": 390,
+        "canvas": 0
+      },
+      {
+        "selector": "footer",
+        "scroll": 390,
+        "width": 390,
+        "canvas": 0
+      }
+    ],
+    "contactStatus": "WhatsApp is being configured. Please email enquiry@8dat.work with your project brief.",
+    "lastCounter": "5 / 5",
+    "canvasAfterToggle": 0
+  },
+  {
+    "name": "small-motion",
+    "errors": [],
+    "chapters": [
+      {
+        "selector": ".investigation",
+        "scroll": 320,
+        "width": 320,
+        "canvas": 0
+      },
+      {
+        "selector": ".workflow",
+        "scroll": 320,
+        "width": 320,
+        "canvas": 0
+      },
+      {
+        "selector": ".creative",
+        "scroll": 320,
+        "width": 320,
+        "canvas": 0
+      },
+      {
+        "selector": ".delivery",
+        "scroll": 320,
+        "width": 320,
+        "canvas": 0
+      },
+      {
+        "selector": ".skills",
+        "scroll": 320,
+        "width": 320,
+        "canvas": 0
+      },
+      {
+        "selector": ".marketing",
+        "scroll": 320,
+        "width": 320,
+        "canvas": 0
+      },
+      {
+        "selector": ".contact-scene",
+        "scroll": 320,
+        "width": 320,
+        "canvas": 0
+      },
+      {
+        "selector": "footer",
+        "scroll": 320,
+        "width": 320,
+        "canvas": 0
+      }
+    ],
+    "contactStatus": "WhatsApp is being configured. Please email enquiry@8dat.work with your project brief.",
+    "lastCounter": "5 / 5",
+    "canvasAfterToggle": 0
+  },
+  {
+    "name": "small-reduced",
+    "errors": [],
+    "chapters": [
+      {
+        "selector": ".investigation",
+        "scroll": 320,
+        "width": 320,
+        "canvas": 0
+      },
+      {
+        "selector": ".workflow",
+        "scroll": 320,
+        "width": 320,
+        "canvas": 0
+      },
+      {
+        "selector": ".creative",
+        "scroll": 320,
+        "width": 320,
+        "canvas": 0
+      },
+      {
+        "selector": ".delivery",
+        "scroll": 320,
+        "width": 320,
+        "canvas": 0
+      },
+      {
+        "selector": ".skills",
+        "scroll": 320,
+        "width": 320,
+        "canvas": 0
+      },
+      {
+        "selector": ".marketing",
+        "scroll": 320,
+        "width": 320,
+        "canvas": 0
+      },
+      {
+        "selector": ".contact-scene",
+        "scroll": 320,
+        "width": 320,
+        "canvas": 0
+      },
+      {
+        "selector": "footer",
+        "scroll": 320,
+        "width": 320,
+        "canvas": 0
+      }
+    ],
+    "contactStatus": "WhatsApp is being configured. Please email enquiry@8dat.work with your project brief.",
+    "lastCounter": "5 / 5",
+    "canvasAfterToggle": 0
+  }
+]
