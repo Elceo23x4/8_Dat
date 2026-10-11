@@ -23,6 +23,15 @@ jobs:
       - run: npm run test:browser
         env:
           NEXT_PUBLIC_BASE_PATH: /8_Dat
+      - name: Verify film seeking and failure recovery
+        run: |
+          node scripts/make-test-film.mjs
+          npm run build
+          TEST_FILM=1 npx playwright test tests/browser/media.spec.mjs
+          rm public/media/arrival.mp4
+          npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /8_Dat
       - uses: actions/upload-artifact@v4
         if: always()
         with:

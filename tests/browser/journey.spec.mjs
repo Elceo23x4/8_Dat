@@ -10,9 +10,11 @@ for(const [name,width,height,reduced] of [['desktop',1440,1000,false],['mobile',
    expect(await page.locator('canvas').evaluate(el=>!!el.getContext('webgl2'))).toBe(true);
   }
   await page.screenshot({path:testInfo.outputPath('arrival.png')});
+  if(name==='desktop'){for(const progress of [.25,.5,.62,.88,.98]){await page.locator('.arrival').evaluate((el,p)=>window.scrollTo({top:(el.offsetHeight-innerHeight)*p,behavior:'instant'}),progress);await page.waitForTimeout(900);await page.screenshot({path:testInfo.outputPath(`arrival-${progress}.png`)});}}
   for(const selector of ['#investigation','#workflow','#work','.delivery','#skills','.marketing','#contact']){
    const el=page.locator(selector);await el.evaluate(el=>window.scrollTo({top:el.getBoundingClientRect().top+scrollY,behavior:'instant'}));await page.waitForTimeout(750);
    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),selector+' overflow').toBe(true);
+   await page.screenshot({path:testInfo.outputPath(`${selector.replace(/[.#]/g,'')}.png`)});
   }
   const gallery=page.locator('#work');const pinned=await gallery.evaluate(el=>el.parentElement.classList.contains('pin-spacer'));
   if(pinned){await gallery.evaluate(el=>window.scrollTo({top:el.parentElement.offsetTop+el.parentElement.offsetHeight-innerHeight,behavior:'instant'}));await page.waitForTimeout(850);}else{await page.locator('.work-rail').evaluate(el=>el.scrollLeft=el.scrollWidth);}
