@@ -47,7 +47,7 @@ export default function Headquarters({progressRef,reduced}) {
   const tex=new THREE.CanvasTexture(label);tex.colorSpace=THREE.SRGBColorSpace;
   const signMat=new THREE.MeshBasicMaterial({map:tex});const sign=new THREE.Mesh(new THREE.PlaneGeometry(5,1.56),signMat);sign.position.set(0,5.5,5.62);tower.add(sign);
   // Secondary city rhythm, deterministic and restrained.
-  for(let i=0;i<16;i++){const side=i%2?-1:1;const h=16+(i*7%25);const x=side*(20+(i%3)*9),z=-15-Math.floor(i/2)*15;box(scene,11,h,10,x,h/2,z,materials.glass);for(let y=2;y<h;y+=2)box(scene,11.1,.1,10.1,x,y,z,materials.metal);}
+  for(let i=0;i<16;i++){const side=i%2?-1:1;const h=16+(i*7%25);const x=side*(70+(i%3)*14),z=-45-Math.floor(i/2)*18;box(scene,11,h,10,x,h/2,z,materials.glass);for(let y=2;y<h;y+=2)box(scene,11.1,.1,10.1,x,y,z,materials.metal);}
   for(const x of [-12,12]){box(scene,.12,5,.12,x,2.5,12,materials.metal);box(scene,1.4,.1,.5,x,5,12,materials.white);}
   // All static box geometry is instanced by material: bounded draw calls instead of hundreds.
   for(const [material,matrices] of staticBoxes){const batch=new THREE.InstancedMesh(geometry,material,matrices.length);matrices.forEach((matrix,i)=>batch.setMatrixAt(i,matrix));batch.computeBoundingSphere();scene.add(batch);}

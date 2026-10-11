@@ -25,7 +25,7 @@ Optional address/email and public configuration overrides are listed in `.env.ex
 
 The existing Pages workflow reads its actual base path from `configure-pages`, so images, textures, video and Next.js assets work under `/8_Dat/` and custom-domain roots. It deploys only when main changes.
 
-The only required production asset still to supply is the cinematic arrival film. Add it as `public/media/arrival.mp4` and commit; the build detects it automatically. See [the video brief](docs/MOTION_HANDOFF.md) for camera timing and export requirements. SVG/DOM animation covers the other scenes.
+The only required production asset still to supply is the cinematic arrival film. Add an architecture-only film as `public/media/arrival.mp4`, or a complete film including the consultant as `public/media/arrival-with-consultant.mp4`, and commit. The build detects it automatically and hides the vector stand-in for the complete film after loading. See [the video brief](docs/MOTION_HANDOFF.md) for camera timing and export requirements. SVG/DOM animation covers the other scenes.
 
 ## Browser verification
 

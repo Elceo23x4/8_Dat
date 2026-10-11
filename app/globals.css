@@ -25,3 +25,5 @@ h1 em,h2 em{font-style:italic}.bucket{max-width:260px}.tool-spill{min-height:430
 .webgl-host{opacity:0}.hero-wordmark{left:50%;right:auto;transform:translateX(-50%);white-space:nowrap}
 
 .arrival-film{transform:translate(var(--film-x,0px),var(--film-y,0px)) scale(1.02)}
+
+.film-character .hero-stage:has(.arrival-film.is-ready) .consultant{visibility:hidden}

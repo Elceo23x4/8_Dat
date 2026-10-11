@@ -30,7 +30,7 @@ The consultant and hand are vector illustration layers. A fully photorealistic w
 
 - Produce a 12–16 second, silent, continuous architectural shot. Use the supplied poster as the lighting/material direction. Export 1920×1080 landscape first, with a separately framed portrait variant if later required.
 - Keep architecture rigid and coherent. Avoid drifting window grids, sliding floors, changing signs, extra doors or deforming buildings. Do not burn copy, navigation or the website wordmark into footage.
-- Keep the consultant out of the architectural clip when retaining the SVG consultant layer. If producing a realistic character-inclusive version, replace the consultant layer in code to avoid showing two people.
+- Keep the consultant out of the architectural clip when retaining the SVG consultant layer. For a realistic character-inclusive film, use `arrival-with-consultant.mp4`; the build automatically hides the vector stand-in only after the video loads. Failed media restores the illustrated scene.
 - The opening is an establishing frame, followed by a controlled full orbit, then a front approach to the entrance. Door opening must happen before crossing the threshold. End on the interior paper palette to support the evidence-board transition.
 - Treat this as a previsualisation brief. A coherent 360° architectural orbit may need a modelled scene and conventional 3D rendering; a single image-to-video pass cannot be assumed to preserve unseen building geometry.
 
@@ -48,7 +48,7 @@ The current procedural camera completes its full orbit during the first 62% of h
 ### Installation of the film
 
 1. Add the approved file as `public/media/arrival.webm` or `public/media/arrival.mp4`.
-2. The build detects `arrival.mp4` automatically, then `arrival.webm`. For another filename, set `NEXT_PUBLIC_ARRIVAL_VIDEO=/media/your-film.mp4`.
+2. The build detects `arrival-with-consultant.mp4` first (and hides the vector stand-in after loading), then `arrival.mp4`, then `arrival.webm`. For another filename, set `NEXT_PUBLIC_ARRIVAL_VIDEO=/media/your-film.mp4`.
 3. Commit the file. The existing Pages workflow rebuilds it. The film replaces the Three.js layer; missing or undecodable media recovers to the live scene and poster. The video is silent, inline and scroll-seeked, without timed autoplay.
 4. Match the first film frame to the poster and inspect the 0%, 25%, 62%, 88% and 100% scroll positions on desktop and mobile.
 5. Use short keyframe intervals for seeking. Prefer an appropriately compressed 1080p file under 25 MB, ideally below 8 MB; measure actual decoding/seek latency on phones. An MP4 export using a short GOP and a front-loaded metadata atom is a useful alternative when WebM seeking underperforms.
@@ -60,7 +60,7 @@ The current procedural camera completes its full orbit during the first 62% of h
 
 | Layer | Production direction | Runtime rule |
 | --- | --- | --- |
-| Consultant | Side-walking loop with natural foot contact; coffee suit, pale shirt, restrained turquoise tie; neutral three-quarter perspective. | Preserve a clean alpha channel; animate position separately; replace the current consultant component. |
+| Consultant | Side-walking loop with natural foot contact; coffee suit, pale shirt, restrained turquoise tie; neutral three-quarter perspective. | Preserve a clean alpha channel; animate position separately; include it in `arrival-with-consultant.mp4` to automatically replace the current consultant visually. |
 | Hand | A right hand approaches a pinned note, grips its upper corner and pulls it toward camera. Separate hand and paper when possible. | Align grip and paper pivot; keep headings/typesetting as HTML. |
 | Bucket | PBR brushed-metal bucket with complete handle and lip; spill direction left to right. | Keep bucket and tool labels independent; labels stay HTML for readability. |
 | Telephone | Coffee/black rotary phone; receiver, base and cord separable. | The shake and separation are visual metaphors, with no damaging-flash effect or audio requirement. |
@@ -79,9 +79,11 @@ Mobile workflow becomes a normal-flow, two-column process so descriptions can re
 
 The confirmed WhatsApp recipient is +234 911 571 6254. X, Instagram and TikTok use @8dat_work. These defaults are committed and can be overridden through `.env.example`. No physical street address or unverified mailbox is invented: the location reads Nigeria with remote collaboration. A business address and contact email are optional public build-time overrides. The form never sends automatically: it opens a prepared brief in WhatsApp for the visitor to review and send. There is no website-side storage.
 
-## Production acceptance still required
+## Rendering evidence and media boundary
 
-Review the live Three.js scene on a WebGL2-capable device; check first-frame composition, every orbit angle, the lobby approach and door timing. Measure 60 FPS rather than assuming it from the library. This environment could render and inspect the browser fallback but could not initialise Vulkan/WebGL for the live 3D path. No GPU performance result, Blender approval, Meshy generation, paid-provider spend or final cinematic video is claimed.
+The live WebGL2 scene has been exercised in GitHub’s Chromium browser runner using software rendering. Screenshots and full journey checks are uploaded as browser evidence in the PR workflow. The renderer instances static architecture by material, uses one shared box geometry, pauses offscreen/hidden and skips drawing when scroll, pointer and viewport are unchanged. Hardware frame rate varies by device; no universal 60 FPS guarantee is claimed.
+
+The remaining production asset is the cinematic arrival film. The generated poster provides its realism target; the live architectural model and vector character are authored illustrations. No Blender approval, paid mesh generation or photorealistic character rig is claimed. The other chapters function with their existing independent SVG and HTML layers.
 
 ## Reference interpretation
 

@@ -1,6 +1,6 @@
 import {test,expect} from '@playwright/test';
 import {existsSync} from 'node:fs';
-const productionFilm=existsSync('public/media/arrival.mp4')||existsSync('public/media/arrival.webm');
+const productionFilm=existsSync('public/media/arrival-with-consultant.mp4')||existsSync('public/media/arrival.mp4')||existsSync('public/media/arrival.webm');
 for(const [name,width,height,reduced] of [['desktop',1440,1000,false],['mobile',390,844,false],['small reduced',320,740,true]]){
  test(`${name}: journey, assets and WhatsApp handoff`,async({page},testInfo)=>{
   await page.setViewportSize({width,height});await page.emulateMedia({reducedMotion:reduced?'reduce':'no-preference'});
