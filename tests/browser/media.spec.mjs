@@ -8,6 +8,6 @@ test.describe('Arrival film production adapter',()=>{
   await page.emulateMedia({reducedMotion:'reduce'});await expect(film).toHaveCount(0);await expect(page.locator('.webgl-host canvas')).toHaveCount(0);await expect(page.locator('.architecture .architectural-poster')).toBeVisible();
  });
  test('failed media recovers to WebGL',async({page})=>{
-  await page.route('**/media/arrival.mp4',r=>r.abort());await page.goto('./');await expect(page.locator('video')).toHaveCount(0);await expect(page.locator('.webgl-host canvas')).toBeVisible();
+  await page.route('**/media/verification-fixture.mp4',r=>r.abort());await page.goto('./');await expect(page.locator('video')).toHaveCount(0);await expect(page.locator('.webgl-host canvas')).toBeVisible();
  });
 });

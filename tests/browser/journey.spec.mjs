@@ -1,4 +1,6 @@
 import {test,expect} from '@playwright/test';
+import {existsSync} from 'node:fs';
+const productionFilm=existsSync('public/media/arrival.mp4')||existsSync('public/media/arrival.webm');
 for(const [name,width,height,reduced] of [['desktop',1440,1000,false],['mobile',390,844,false],['small reduced',320,740,true]]){
  test(`${name}: journey, assets and WhatsApp handoff`,async({page},testInfo)=>{
   await page.setViewportSize({width,height});await page.emulateMedia({reducedMotion:reduced?'reduce':'no-preference'});
@@ -6,8 +8,7 @@ for(const [name,width,height,reduced] of [['desktop',1440,1000,false],['mobile',
   page.on('response',r=>{if(r.url().startsWith('http://127.0.0.1:3001')&&r.status()>=400)failedAssets.push(`${r.status()} ${r.url()}`);});
   await page.goto('./');await expect(page.locator('h1')).toBeVisible();await page.waitForTimeout(1000);
   if(!reduced&&process.env.BROWSER_FALLBACK!=='1'){
-   await expect(page.locator('.webgl-host canvas')).toBeVisible();
-   expect(await page.locator('canvas').evaluate(el=>!!el.getContext('webgl2'))).toBe(true);
+   if(productionFilm){await expect(page.locator('video')).toHaveClass(/is-ready/);}else{await expect(page.locator('.webgl-host canvas')).toBeVisible();expect(await page.locator('canvas').evaluate(el=>!!el.getContext('webgl2'))).toBe(true);}
   }
   await page.screenshot({path:testInfo.outputPath('arrival.png')});
   if(name==='desktop'){for(const progress of [.25,.5,.62,.88,.98]){await page.locator('.arrival').evaluate((el,p)=>window.scrollTo({top:(el.offsetHeight-innerHeight)*p,behavior:'instant'}),progress);await page.waitForTimeout(900);await page.screenshot({path:testInfo.outputPath(`arrival-${progress}.png`)});}}
