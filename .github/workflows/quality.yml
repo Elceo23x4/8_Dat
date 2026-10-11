@@ -17,6 +17,32 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /8_Dat
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser
+        env:
+          NEXT_PUBLIC_BASE_PATH: /8_Dat
+      - name: Verify film seeking and failure recovery
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+          node scripts/make-test-film.mjs
+          NEXT_PUBLIC_ARRIVAL_VIDEO=/media/verification-fixture.mp4 npm run build
+          TEST_FILM=1 npx playwright test tests/browser/media.spec.mjs
+          rm public/media/verification-fixture.mp4
+          npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /8_Dat
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-evidence
+          path: |
+            playwright-report/
+            test-results/
+            media-playwright-report/
+            media-test-results/
       - uses: actions/upload-artifact@v4
         with:
           name: 8dat-static-site

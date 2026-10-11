@@ -1,230 +1,59 @@
-[
-  {
-    "name": "desktop",
-    "errors": [],
-    "chapters": [
-      {
-        "selector": ".investigation",
-        "scroll": 1440,
-        "width": 1440,
-        "canvas": 0
-      },
-      {
-        "selector": ".workflow",
-        "scroll": 1440,
-        "width": 1440,
-        "canvas": 0
-      },
-      {
-        "selector": ".creative",
-        "scroll": 1440,
-        "width": 1440,
-        "canvas": 0
-      },
-      {
-        "selector": ".delivery",
-        "scroll": 1440,
-        "width": 1440,
-        "canvas": 0
-      },
-      {
-        "selector": ".skills",
-        "scroll": 1440,
-        "width": 1440,
-        "canvas": 0
-      },
-      {
-        "selector": ".marketing",
-        "scroll": 1440,
-        "width": 1440,
-        "canvas": 0
-      },
-      {
-        "selector": ".contact-scene",
-        "scroll": 1440,
-        "width": 1440,
-        "canvas": 0
-      },
-      {
-        "selector": "footer",
-        "scroll": 1440,
-        "width": 1440,
-        "canvas": 0
-      }
-    ],
-    "contactStatus": "WhatsApp is being configured. Please email enquiry@8dat.work with your project brief.",
-    "lastCounter": "5 / 5",
-    "canvasAfterToggle": 0
+{
+  "date": "2026-10-11",
+  "pullRequest": "https://github.com/Elceo23x4/8_Dat/pull/2",
+  "unitTests": {
+    "passed": 4
   },
-  {
-    "name": "mobile",
-    "errors": [],
-    "chapters": [
-      {
-        "selector": ".investigation",
-        "scroll": 390,
-        "width": 390,
-        "canvas": 0
-      },
-      {
-        "selector": ".workflow",
-        "scroll": 390,
-        "width": 390,
-        "canvas": 0
-      },
-      {
-        "selector": ".creative",
-        "scroll": 390,
-        "width": 390,
-        "canvas": 0
-      },
-      {
-        "selector": ".delivery",
-        "scroll": 390,
-        "width": 390,
-        "canvas": 0
-      },
-      {
-        "selector": ".skills",
-        "scroll": 390,
-        "width": 390,
-        "canvas": 0
-      },
-      {
-        "selector": ".marketing",
-        "scroll": 390,
-        "width": 390,
-        "canvas": 0
-      },
-      {
-        "selector": ".contact-scene",
-        "scroll": 390,
-        "width": 390,
-        "canvas": 0
-      },
-      {
-        "selector": "footer",
-        "scroll": 390,
-        "width": 390,
-        "canvas": 0
-      }
-    ],
-    "contactStatus": "WhatsApp is being configured. Please email enquiry@8dat.work with your project brief.",
-    "lastCounter": "5 / 5",
-    "canvasAfterToggle": 0
+  "productionExport": {
+    "root": "passed",
+    "projectBasePath": "/8_Dat",
+    "project": "passed"
   },
-  {
-    "name": "small-motion",
-    "errors": [],
-    "chapters": [
+  "localBrowser": {
+    "mode": "GPU-disabled fallback",
+    "journeys": [
       {
-        "selector": ".investigation",
-        "scroll": 320,
-        "width": 320,
-        "canvas": 0
+        "viewport": [
+          1440,
+          1000
+        ],
+        "motion": "normal",
+        "result": "passed"
       },
       {
-        "selector": ".workflow",
-        "scroll": 320,
-        "width": 320,
-        "canvas": 0
+        "viewport": [
+          390,
+          844
+        ],
+        "motion": "normal",
+        "result": "passed"
       },
       {
-        "selector": ".creative",
-        "scroll": 320,
-        "width": 320,
-        "canvas": 0
-      },
-      {
-        "selector": ".delivery",
-        "scroll": 320,
-        "width": 320,
-        "canvas": 0
-      },
-      {
-        "selector": ".skills",
-        "scroll": 320,
-        "width": 320,
-        "canvas": 0
-      },
-      {
-        "selector": ".marketing",
-        "scroll": 320,
-        "width": 320,
-        "canvas": 0
-      },
-      {
-        "selector": ".contact-scene",
-        "scroll": 320,
-        "width": 320,
-        "canvas": 0
-      },
-      {
-        "selector": "footer",
-        "scroll": 320,
-        "width": 320,
-        "canvas": 0
+        "viewport": [
+          320,
+          740
+        ],
+        "motion": "reduced",
+        "result": "passed"
       }
     ],
-    "contactStatus": "WhatsApp is being configured. Please email enquiry@8dat.work with your project brief.",
-    "lastCounter": "5 / 5",
-    "canvasAfterToggle": 0
+    "videoSeekForwardReverse": "passed",
+    "liveReducedMotionChange": "passed"
   },
-  {
-    "name": "small-reduced",
-    "errors": [],
-    "chapters": [
-      {
-        "selector": ".investigation",
-        "scroll": 320,
-        "width": 320,
-        "canvas": 0
-      },
-      {
-        "selector": ".workflow",
-        "scroll": 320,
-        "width": 320,
-        "canvas": 0
-      },
-      {
-        "selector": ".creative",
-        "scroll": 320,
-        "width": 320,
-        "canvas": 0
-      },
-      {
-        "selector": ".delivery",
-        "scroll": 320,
-        "width": 320,
-        "canvas": 0
-      },
-      {
-        "selector": ".skills",
-        "scroll": 320,
-        "width": 320,
-        "canvas": 0
-      },
-      {
-        "selector": ".marketing",
-        "scroll": 320,
-        "width": 320,
-        "canvas": 0
-      },
-      {
-        "selector": ".contact-scene",
-        "scroll": 320,
-        "width": 320,
-        "canvas": 0
-      },
-      {
-        "selector": "footer",
-        "scroll": 320,
-        "width": 320,
-        "canvas": 0
-      }
-    ],
-    "contactStatus": "WhatsApp is being configured. Please email enquiry@8dat.work with your project brief.",
-    "lastCounter": "5 / 5",
-    "canvasAfterToggle": 0
-  }
-]
+  "contact": {
+    "recipient": "2349115716254",
+    "handle": "8dat_work",
+    "briefEncoding": "passed",
+    "messageSent": false
+  },
+  "githubBrowser": {
+    "mode": "Chromium SwiftShader WebGL2",
+    "initialSuccessfulRun": 38115400107,
+    "journeyTests": 3,
+    "result": "passed",
+    "fullJourneyAndCameraRun": 38115779119,
+    "workflowChecks": "https://github.com/Elceo23x4/8_Dat/pull/2/checks"
+  },
+  "hardwareFPS": null,
+  "remainingProductionAsset": "cinematic arrival film"
+}
