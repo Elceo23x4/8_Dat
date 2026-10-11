@@ -27,3 +27,4 @@ h1 em,h2 em{font-style:italic}.bucket{max-width:260px}.tool-spill{min-height:430
 .arrival-film{transform:translate(var(--film-x,0px),var(--film-y,0px)) scale(1.02)}
 
 .film-character .hero-stage:has(.arrival-film.is-ready) .consultant{visibility:hidden}
+@media(min-width:701px) and (max-width:1050px){.nav-wordmark{left:50%;transform:translateX(-50%) translateY(-10px)}.is-entered .nav-wordmark{transform:translateX(-50%)}.navigation nav{gap:18px}}

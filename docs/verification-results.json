@@ -1,16 +1,59 @@
 {
   "date": "2026-10-11",
   "pullRequest": "https://github.com/Elceo23x4/8_Dat/pull/2",
-  "unitTests": {"passed": 4},
-  "productionExport": {"root": "passed", "projectBasePath": "/8_Dat", "project": "passed"},
+  "unitTests": {
+    "passed": 4
+  },
+  "productionExport": {
+    "root": "passed",
+    "projectBasePath": "/8_Dat",
+    "project": "passed"
+  },
   "localBrowser": {
     "mode": "GPU-disabled fallback",
-    "journeys": [{"viewport": [1440,1000], "motion": "normal", "result": "passed"}, {"viewport": [390,844], "motion": "normal", "result": "passed"}, {"viewport": [320,740], "motion": "reduced", "result": "passed"}],
+    "journeys": [
+      {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "motion": "normal",
+        "result": "passed"
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "motion": "normal",
+        "result": "passed"
+      },
+      {
+        "viewport": [
+          320,
+          740
+        ],
+        "motion": "reduced",
+        "result": "passed"
+      }
+    ],
     "videoSeekForwardReverse": "passed",
     "liveReducedMotionChange": "passed"
   },
-  "contact": {"recipient": "2349115716254", "handle": "8dat_work", "briefEncoding": "passed", "messageSent": false},
-  "githubBrowser": {"mode": "Chromium SwiftShader WebGL2", "initialSuccessfulRun": 38115400107, "journeyTests": 3, "result": "passed", "finalRun": null},
+  "contact": {
+    "recipient": "2349115716254",
+    "handle": "8dat_work",
+    "briefEncoding": "passed",
+    "messageSent": false
+  },
+  "githubBrowser": {
+    "mode": "Chromium SwiftShader WebGL2",
+    "initialSuccessfulRun": 38115400107,
+    "journeyTests": 3,
+    "result": "passed",
+    "fullJourneyAndCameraRun": 38115779119,
+    "workflowChecks": "https://github.com/Elceo23x4/8_Dat/pull/2/checks"
+  },
   "hardwareFPS": null,
   "remainingProductionAsset": "cinematic arrival film"
 }
