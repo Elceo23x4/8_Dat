@@ -1,6 +1,7 @@
 'use client';
 import {useEffect,useRef,useState} from 'react';
-export default function ArrivalFilm({src,progressRef,reduced}){
+import {assetURL} from '../lib/assets.mjs';
+export default function ArrivalFilm({src,progressRef,reduced,onFailure}){
  const ref=useRef(null),[ready,setReady]=useState(false),[failed,setFailed]=useState(false);
  useEffect(()=>{
   if(reduced||failed)return;
@@ -18,5 +19,5 @@ export default function ArrivalFilm({src,progressRef,reduced}){
   return()=>{cancelAnimationFrame(frame);observer.disconnect();video.pause();};
  },[progressRef,reduced,failed]);
  if(reduced||failed)return null;
- return <video ref={ref} className={`arrival-film ${ready?'is-ready':''}`} src={src} muted playsInline preload="auto" poster="/art/headquarters-poster.webp" onLoadedData={()=>setReady(true)} onError={()=>setFailed(true)} aria-hidden="true"/>;
+ return <video ref={ref} className={`arrival-film ${ready?'is-ready':''}`} src={src} muted playsInline preload="auto" poster={assetURL('/art/headquarters-poster.webp')} onLoadedData={()=>setReady(true)} onError={()=>{setFailed(true);onFailure?.();}} aria-hidden="true"/>;
 }
