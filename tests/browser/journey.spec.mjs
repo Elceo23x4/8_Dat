@@ -19,10 +19,10 @@ for(const [name,width,height,reduced] of [['desktop',1440,1000,false],['mobile',
   await expect(page.locator('.rail-controls [aria-live]')).toHaveText('5 / 5');
   await page.locator('#contact').scrollIntoViewIfNeeded();
   await page.locator('[name=name]').fill('Ada Okafor');await page.locator('[name=business]').fill('A&B Studio');await page.locator('[name=email]').fill('ada@example.com');await page.locator('[name=message]').fill('A launch with + signs & a new website.');
+  expect(await page.getByRole('link',{name:'Instagram ↗'}).getAttribute('href')).toBe('https://www.instagram.com/8dat_work/');
+  expect(failedAssets).toEqual([]);expect(errors).toEqual([]);
   let handoff;await page.route('https://wa.me/**',route=>{handoff=new URL(route.request().url());return route.abort();});
   await page.getByRole('button',{name:'Continue to WhatsApp'}).click();await expect.poll(()=>handoff?.pathname).toBe('/2349115716254');
   expect(handoff.searchParams.get('text')).toContain('Business: A&B Studio');expect(handoff.searchParams.get('text')).toContain('A launch with + signs & a new website.');
-  expect(await page.getByRole('link',{name:'Instagram ↗'}).getAttribute('href')).toBe('https://www.instagram.com/8dat_work/');
-  expect(failedAssets).toEqual([]);expect(errors).toEqual([]);
  });
 }

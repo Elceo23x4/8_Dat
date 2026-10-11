@@ -17,3 +17,5 @@ h1 em,h2 em{font-style:italic}.bucket{max-width:260px}.tool-spill{min-height:430
 
 @media(min-width:701px){.creative{min-height:100svh}.creative .work-art{height:clamp(200px,30vh,330px)}.creative .work-rail{padding-top:35px;padding-bottom:20px}}
 .contact-details>a{display:block;margin-bottom:12px}
+
+@media(min-width:701px){.story:not(.reduced) .work-rail{scroll-snap-type:none}.creative .rail-controls{padding-bottom:20px}}

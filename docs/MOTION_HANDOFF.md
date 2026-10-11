@@ -11,7 +11,7 @@ The portfolio follows a consultant from arrival to investigation, working system
 | 01 Arrival | A glass headquarters and city, a full camera orbit, a consultant approaching from the left, sliding entry doors and camera approach into the lobby. The large wordmark shrinks and clears the scene. | Native scroll; restrained pointer parallax | Three.js architecture, layered SVG consultant, GSAP timeline |
 | 02 Investigation | Notes appear on an evidence board. Pins and connecting threads establish relationships. A hand approaches the requirements note, which enlarges to cover the viewport. | Scroll, reversible | Independent paper layers, SVG hand and threads |
 | 03 Workflow | Request, confirmation, invoice/payment, fulfilment, records and delivery appear in order. A package moves toward dispatch; the truck arrives and leaves. | Scroll, reversible | Semantic HTML process, vector parcel/truck, GSAP |
-| 04 Creative | Identity, billboard, website, campaign and business playbook concepts have changing perspective. Visitors can drag, swipe or use arrow buttons. | Scroll, horizontal swipe, buttons, keyboard | CSS perspective and native scroll-snap |
+| 04 Creative | Identity, billboard, website, campaign and business playbook concepts have changing perspective. Desktop scroll carries all five cards through the scene. Touch layouts retain swipe; arrow buttons work in both modes. | Scroll, horizontal swipe, buttons, keyboard | CSS perspective, GSAP desktop pin and native mobile scroll-snap |
 | 05 Deliverables | A rope-bound square parcel with a retro stamp separates into four panels. Strategy, brand, technology and operations emerge underneath. | Scroll, reversible | Four separately animated panels, ropes and stamp |
 | 06 Tools | A metallic bucket tips and shifts left while tool labels pour right. Individual chips respond to hover. | Scroll and pointer | Layered SVG bucket, GSAP spill, Motion hover |
 | 07 Marketing | Research → attention → personal selling → acquisition → delivery → learning. Thread connections and sequential cards show the campaign as a system. | Scroll | HTML cards with SVG network |
@@ -48,10 +48,10 @@ The current procedural camera completes its full orbit during the first 62% of h
 ### Installation of the film
 
 1. Add the approved file as `public/media/arrival.webm` or `public/media/arrival.mp4`.
-2. Set `NEXT_PUBLIC_ARRIVAL_VIDEO=/media/arrival.webm` before building.
-3. Rebuild. The film replaces the Three.js layer; the generated poster remains the fallback. The video is silent, inline and scroll-seeked, without timed autoplay.
+2. The build detects `arrival.mp4` automatically, then `arrival.webm`. For another filename, set `NEXT_PUBLIC_ARRIVAL_VIDEO=/media/your-film.mp4`.
+3. Commit the file. The existing Pages workflow rebuilds it. The film replaces the Three.js layer; missing or undecodable media recovers to the live scene and poster. The video is silent, inline and scroll-seeked, without timed autoplay.
 4. Match the first film frame to the poster and inspect the 0%, 25%, 62%, 88% and 100% scroll positions on desktop and mobile.
-5. Use short keyframe intervals for seeking. Prefer an appropriately compressed 1080p file under 8 MB; measure actual decoding/seek latency on phones. An MP4 export using a short GOP and a front-loaded metadata atom is a useful alternative when WebM seeking underperforms.
+5. Use short keyframe intervals for seeking. Prefer an appropriately compressed 1080p file under 25 MB, ideally below 8 MB; measure actual decoding/seek latency on phones. An MP4 export using a short GOP and a front-loaded metadata atom is a useful alternative when WebM seeking underperforms.
 6. For reduced motion, show the poster and keep the narrative readable. Missing or invalid media must leave the poster in place.
 
 `ArrivalFilm.js` only accepts a configured local `/media/…mp4` or `/media/…webm` path. It maps normalised hero progress to clip time, avoids seeking while an earlier seek is in flight, pauses work offscreen and stops its loop on cleanup.
@@ -77,7 +77,7 @@ Mobile workflow becomes a normal-flow, two-column process so descriptions can re
 
 ## Contact configuration
 
-The user chose to configure contact destinations later. `.env.example` lists the WhatsApp number, address and X/Instagram/TikTok URLs. These values are public build-time configuration. Until populated, social destinations are labelled soon and the form gives an email fallback. The form never sends automatically: it opens a prepared brief in WhatsApp for the visitor to review and send. There is no website-side storage.
+The confirmed WhatsApp recipient is +234 911 571 6254. X, Instagram and TikTok use @8dat_work. These defaults are committed and can be overridden through `.env.example`. No physical street address or unverified mailbox is invented: the location reads Nigeria with remote collaboration. A business address and contact email are optional public build-time overrides. The form never sends automatically: it opens a prepared brief in WhatsApp for the visitor to review and send. There is no website-side storage.
 
 ## Production acceptance still required
 

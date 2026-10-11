@@ -17,7 +17,24 @@ npm run build
 
 ## Contact configuration
 
-Copy `.env.example` to `.env.local`. Set the WhatsApp recipient in international digits including country code, with no leading zero. Configure the real address and HTTPS social profile URLs. These public values are embedded at build time; rebuild after changing them. Until a valid recipient exists, submission gives an email fallback instead of sending to an invented number.
+The form opens the complete brief in WhatsApp at **+234 911 571 6254**, including name, business, email, service and message. X, Instagram and TikTok link to **@8dat_work**. No message is sent until the visitor reviews and sends it in WhatsApp.
+
+Optional address/email and public configuration overrides are listed in `.env.example`. No physical street address or email mailbox is assumed.
+
+## GitHub Pages and video
+
+The existing Pages workflow reads its actual base path from `configure-pages`, so images, textures, video and Next.js assets work under `/8_Dat/` and custom-domain roots. It deploys only when main changes.
+
+The only required production asset still to supply is the cinematic arrival film. Add it as `public/media/arrival.mp4` and commit; the build detects it automatically. See [the video brief](docs/MOTION_HANDOFF.md) for camera timing and export requirements. SVG/DOM animation covers the other scenes.
+
+## Browser verification
+
+```sh
+npx playwright install chromium
+npm run test:browser
+```
+
+Run after `npm run build`. The PR workflow also tests a `/8_Dat` export with software WebGL, desktop, mobile, reduced motion and intercepted WhatsApp navigation. It uploads screenshots and failure traces. Software WebGL checks establish functional rendering, not a device-wide 60 FPS guarantee.
 
 ## The story
 
