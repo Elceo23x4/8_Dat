@@ -1,78 +1,74 @@
 'use client';
 import {useEffect,useRef,useState,useCallback} from 'react';
 import * as THREE from 'three';
-import ArrivalFilm from './ArrivalFilm';
 import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
 import {assetURL} from '../lib/assets.mjs';
-const configuredFilm=process.env.NEXT_PUBLIC_ARRIVAL_VIDEO || '';
+import {arrivalCamera,smoothRange} from '../lib/scene/locomotion.mjs';
+import {createConsultant} from '../lib/scene/consultant.mjs';
+import {buildArchitecture} from '../lib/scene/architecture.mjs';
+import ArrivalFilm from './ArrivalFilm';
+const configuredFilm=process.env.NEXT_PUBLIC_ARRIVAL_VIDEO||'';
+const filmIncludesConsultant=process.env.NEXT_PUBLIC_FILM_INCLUDES_CONSULTANT==='true';
 const filmSource=/^\/media\/[a-zA-Z0-9/_-]+\.(mp4|webm)$/.test(configuredFilm)?configuredFilm:'';
 
-// Authored architectural geometry. No provider mesh, animation clip or paid API.
-export default function Headquarters({progressRef,reduced}) {
- const host=useRef(null), live=useRef({pointer:0}), [failed,setFailed]=useState(false), [filmFailed,setFilmFailed]=useState(false);
+function surfaceTexture(kind){
+ const canvas=document.createElement('canvas');canvas.width=canvas.height=256;const c=canvas.getContext('2d');
+ c.fillStyle=kind==='paving'?'#766153':'#b8b0a2';c.fillRect(0,0,256,256);
+ let seed=31;const random=()=>{seed=(seed*16807)%2147483647;return(seed-1)/2147483646;};
+ for(let i=0;i<9000;i++){const tone=Math.floor(70+random()*150);c.fillStyle=`rgba(${tone},${tone},${tone},${random()*.16})`;c.fillRect(random()*256,random()*256,1,kind==='cloth'?4:1);}
+ if(kind==='paving'){c.strokeStyle='#2c221b';c.lineWidth=1;for(const y of [0,128,256]){c.beginPath();c.moveTo(0,y);c.lineTo(256,y);c.stroke();}for(const [x,y] of [[128,0],[64,128],[256,128]]){c.beginPath();c.moveTo(x,y);c.lineTo(x,y+128);c.stroke();}}
+ const texture=new THREE.CanvasTexture(canvas);texture.wrapS=texture.wrapT=THREE.RepeatWrapping;texture.repeat.set(kind==='paving'?120:3,kind==='paving'?120:3);texture.colorSpace=THREE.SRGBColorSpace;return texture;
+}
+
+export default function Headquarters({progressRef,reduced}){
+ const host=useRef(null),pointer=useRef(0),[failed,setFailed]=useState(false),[filmFailed,setFilmFailed]=useState(false);
  const onFilmFailure=useCallback(()=>setFilmFailed(true),[]);
  useEffect(()=>{
-  if(reduced||(filmSource&&!filmFailed)||failed)return;
-  const el=host.current; let renderer;
-  try {const canvas=document.createElement('canvas');const context=canvas.getContext('webgl2',{antialias:true,alpha:true,powerPreference:'low-power'});if(!context){setFailed(true);return;}renderer=new THREE.WebGLRenderer({canvas,context,antialias:true,alpha:true,powerPreference:'low-power'});}catch{setFailed(true);return;}
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio,1.5));
-  renderer.outputColorSpace=THREE.SRGBColorSpace;
-  renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.1;
-  renderer.setClearColor('#e7e1d7',1); el.appendChild(renderer.domElement);
-  const scene=new THREE.Scene(); scene.fog=new THREE.Fog('#e7e1d7',55,150);
-  const pmrem=new THREE.PMREMGenerator(renderer);const room=new RoomEnvironment();const environment=pmrem.fromScene(room,.04);scene.environment=environment.texture;room.dispose();pmrem.dispose();
-  const camera=new THREE.PerspectiveCamera(43,1,.1,240);camera.position.set(0,20,62);camera.lookAt(-5,17,0);
-  scene.add(new THREE.HemisphereLight('#fff6e6','#4e4036',3));
-  const sun=new THREE.DirectionalLight('#ffedce',4);sun.position.set(-20,40,20);scene.add(sun);
-  const tower=new THREE.Group();scene.add(tower);
-  const materials={glass:new THREE.MeshStandardMaterial({color:'#577a78',metalness:.75,roughness:.19}),metal:new THREE.MeshStandardMaterial({color:'#242a28',metalness:.8,roughness:.35}),stone:new THREE.MeshStandardMaterial({color:'#b8afa2',roughness:.9}),white:new THREE.MeshStandardMaterial({color:'#eee5d7',roughness:.7}),teal:new THREE.MeshStandardMaterial({color:'#80cec5',emissive:'#47938a',emissiveIntensity:.25})};
-  const geometry=new THREE.BoxGeometry(1,1,1);
-  const staticBoxes=new Map();
-  function box(parent,w,h,d,x,y,z,mat,dynamic=false){const m=new THREE.Mesh(geometry,mat);m.scale.set(w,h,d);m.position.set(x,y,z);if(dynamic)parent.add(m);else{const list=staticBoxes.get(mat)||[];m.updateMatrix();list.push(m.matrix.clone());staticBoxes.set(mat,list);}return m;}
-  box(scene,180,.25,180,0,-.2,0,materials.stone);
-  box(scene,16,.08,60,0,-.02,27,materials.white);
-  for(let i=0;i<10;i++)box(scene,8,.01,.12,0,.04,10+i*3,materials.stone);
-  // The lobby is a complete recess; facade surrounds a real entrance gap.
-  box(tower,18,31,11,0,19.5,0,materials.glass);
-  for(let y=5;y<=35;y+=1.5)box(tower,18.18,.08,11.18,0,y,0,materials.metal);
-  for(let x=-9;x<=9;x+=1.5){box(tower,.08,31,11.2,x,19.5,0,materials.metal);}
-  box(tower,6,4,11,-6,2,0,materials.glass);box(tower,6,4,11,6,2,0,materials.glass);
-  box(tower,6,.2,11,0,4,0,materials.metal);box(tower,6,.15,11,0,.05,0,materials.white);
-  box(tower,6,4,.15,0,2,-5.5,materials.white);box(tower,6,4,.12,0,2,-3,materials.teal);
-  const doorL=box(tower,1.5,3.2,.12,-.78,1.65,5.6,materials.glass,true);
-  const doorR=box(tower,1.5,3.2,.12,.78,1.65,5.6,materials.glass,true);
-  box(tower,8,.18,3,0,4.1,6.2,materials.metal);
-  // Real texture typography applied to architecture, independently from HTML logo.
-  const label=document.createElement('canvas');label.width=512;label.height=160;const ctx=label.getContext('2d');
-  ctx.fillStyle='#242a28';ctx.fillRect(0,0,512,160);ctx.fillStyle='#f6efdf';ctx.font='bold 105px Arial';ctx.textAlign='center';ctx.fillText('8 DAT',256,120);
-  const tex=new THREE.CanvasTexture(label);tex.colorSpace=THREE.SRGBColorSpace;
-  const signMat=new THREE.MeshBasicMaterial({map:tex});const sign=new THREE.Mesh(new THREE.PlaneGeometry(5,1.56),signMat);sign.position.set(0,5.5,5.62);tower.add(sign);
-  // Secondary city rhythm, deterministic and restrained.
-  for(let i=0;i<16;i++){const side=i%2?-1:1;const h=16+(i*7%25);const x=side*(70+(i%3)*14),z=-45-Math.floor(i/2)*18;box(scene,11,h,10,x,h/2,z,materials.glass);for(let y=2;y<h;y+=2)box(scene,11.1,.1,10.1,x,y,z,materials.metal);}
-  for(const x of [-12,12]){box(scene,.12,5,.12,x,2.5,12,materials.metal);box(scene,1.4,.1,.5,x,5,12,materials.white);}
-  // All static box geometry is instanced by material: bounded draw calls instead of hundreds.
-  for(const [material,matrices] of staticBoxes){const batch=new THREE.InstancedMesh(geometry,material,matrices.length);matrices.forEach((matrix,i)=>batch.setMatrixAt(i,matrix));batch.computeBoundingSphere();scene.add(batch);}
-  let visible=true, disposed=false;
-  const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;},{rootMargin:'100px'});observer.observe(el);
-  let needsFrame=true,lastProgress=-1,lastPointer=null;
-  const resize=()=>{needsFrame=true;const r=el.getBoundingClientRect();renderer.setSize(r.width,r.height);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();};
-  const ro=new ResizeObserver(resize);ro.observe(el);resize();
-  const pointer=e=>{live.current.pointer=(e.clientX/window.innerWidth-.5)*2;};window.addEventListener('pointermove',pointer,{passive:true});
+  if(reduced||failed||(filmSource&&!filmFailed&&filmIncludesConsultant))return;
+  const architectureFilm=!!filmSource&&!filmFailed&&!filmIncludesConsultant;
+  const el=host.current;if(!el)return;let renderer;
+  try{const canvas=document.createElement('canvas');const context=canvas.getContext('webgl2',{antialias:true,alpha:true});if(!context){setFailed(true);return;}renderer=new THREE.WebGLRenderer({canvas,context,antialias:true,alpha:true});}catch{setFailed(true);return;}
+  renderer.setPixelRatio(Math.min(devicePixelRatio,1.25));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.4;
+  renderer.setClearColor('#211713',architectureFilm?0:1);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;el.appendChild(renderer.domElement);
+  const scene=new THREE.Scene();scene.fog=new THREE.Fog('#211713',75,190);
+  const room=new RoomEnvironment(),pmrem=new THREE.PMREMGenerator(renderer),environment=pmrem.fromScene(room,.035);scene.environment=environment.texture;room.dispose();pmrem.dispose();
+  scene.add(new THREE.HemisphereLight('#fff4de','#39251b',2.3));
+  const sun=new THREE.DirectionalLight('#ffdfa3',4.5);sun.position.set(-18,35,25);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);Object.assign(sun.shadow.camera,{left:-24,right:24,top:45,bottom:-12,near:.5,far:100});sun.shadow.bias=-.0003;scene.add(sun);
+  const fill=new THREE.DirectionalLight('#d5e4e1',1.1);fill.position.set(14,8,-20);scene.add(fill);
+  const paving=surfaceTexture('paving'),cloth=surfaceTexture('cloth');
+  const standard=(color,roughness=.5,metalness=0)=>new THREE.MeshStandardMaterial({color,roughness,metalness});
+  const materials={
+   glass:new THREE.MeshPhysicalMaterial({color:'#293d3b',metalness:.68,roughness:.16,clearcoat:1,clearcoatRoughness:.08,envMapIntensity:1.7}),
+   doorGlass:new THREE.MeshPhysicalMaterial({color:'#bac5bd',transparent:true,opacity:.27,metalness:.3,roughness:.06,clearcoat:1,side:THREE.DoubleSide,depthWrite:false}),
+   aluminum:standard('#b6b6aa',.27,.9),white:standard('#dfdacd',.36,.2),gold:standard('#aa8850',.3,.88),
+   walnut:standard('#39231b',.64),paving:new THREE.MeshStandardMaterial({color:'#4b3528',map:paving,roughness:.35,metalness:.18}),lobbyFloor:standard('#b8aa8e',.23,.25),
+   light:new THREE.MeshStandardMaterial({color:'#efc783',emissive:'#f4c875',emissiveIntensity:2}),bark:standard('#4e3724',.9),leaves:standard('#27392b',.85),
+   suit:new THREE.MeshStandardMaterial({color:'#34251e',roughness:.85,bumpMap:cloth,bumpScale:.015}),lapel:standard('#211b16',.75),shirt:standard('#d9d2bd',.95),tie:standard('#94774a',.8),
+   skin:standard('#875b3f',.56),lips:standard('#684434',.65),hair:standard('#1b1713',.94),eye:standard('#d9cbb7',.4),iris:standard('#211915',.3),leather:standard('#211913',.33),sole:standard('#17120f',.88),buttons:standard('#8b7654',.3,.7)
+  };
+  const lighting=new Set(scene.children);
+  const architecture=buildArchitecture(scene,materials);
+  if(architectureFilm){scene.children.filter(node=>!lighting.has(node)).forEach(node=>{node.visible=false;});scene.fog=null;const shadow=new THREE.Mesh(new THREE.PlaneGeometry(100,100),new THREE.ShadowMaterial({opacity:.25}));shadow.rotation.x=-Math.PI/2;shadow.receiveShadow=true;scene.add(shadow);materials.filmShadow=shadow.material;}
+  const consultant=createConsultant(scene,materials);
+  // Architecture includes two door groups named below by returned handles.
+  const doorGroups=architecture.doors;
+  const camera=new THREE.PerspectiveCamera(43,1,.05,260);
+  let visible=true,dirty=true,lastProgress=-1,lastPointer=null,disposed=false;
+  const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;});observer.observe(el);
+  const resize=()=>{dirty=true;const r=el.getBoundingClientRect();renderer.setSize(r.width,r.height);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();};const ro=new ResizeObserver(resize);ro.observe(el);resize();
+  const move=e=>{pointer.current=(e.clientX/innerWidth-.5)*2;};window.addEventListener('pointermove',move,{passive:true});
   const lose=e=>{e.preventDefault();setFailed(true);};renderer.domElement.addEventListener('webglcontextlost',lose);
-  const target=new THREE.Vector3();
   renderer.setAnimationLoop(()=>{
-   if(disposed||!visible||document.hidden)return;
-   const p=progressRef.current;
-   if(!needsFrame&&Math.abs(p-lastProgress)<.00001&&live.current.pointer===lastPointer)return;
-   needsFrame=false;lastProgress=p;lastPointer=live.current.pointer;
-   el.style.opacity=THREE.MathUtils.smoothstep(p,.04,.14);const orbit=Math.min(p/.62,1)*Math.PI*2;
-   const approach=THREE.MathUtils.smoothstep(p,.64,1);const radius=THREE.MathUtils.lerp(62,3,approach);
-   target.set(Math.sin(orbit)*radius+live.current.pointer*.7,THREE.MathUtils.lerp(20,2.2,approach),Math.cos(orbit)*radius);
-   camera.position.copy(target);camera.lookAt(THREE.MathUtils.lerp(-5,0,Math.min(p*4,1)),THREE.MathUtils.lerp(17,2.1,approach),0);
-   const open=THREE.MathUtils.smoothstep(p,.88,.98);doorL.position.x=-.78-open*1.45;doorR.position.x=.78+open*1.45;
+   if(!visible||document.hidden||disposed)return;
+   const p=progressRef.current;if(!dirty&&Math.abs(p-lastProgress)<.00001&&pointer.current===lastPointer)return;
+   dirty=false;lastProgress=p;lastPointer=pointer.current;
+   el.style.opacity=architectureFilm?1:smoothRange(p,.035,.12);
+   const rig=arrivalCamera(p,camera.aspect);camera.fov=rig.fov;camera.updateProjectionMatrix();camera.position.set(rig.x+pointer.current*.35,rig.y,rig.z);camera.lookAt(0,rig.lookY,0);
+   consultant.update(smoothRange(p,.06,.97));consultant.root.visible=p<.99;
+   doorGroups.forEach((door,i)=>{const side=i===0?-1:1;door.position.x=side*(.9+rig.door*1.72);});
    renderer.render(scene,camera);
   });
-  return()=>{disposed=true;renderer.setAnimationLoop(null);observer.disconnect();ro.disconnect();window.removeEventListener('pointermove',pointer);renderer.domElement.removeEventListener('webglcontextlost',lose);scene.traverse(o=>{if(o.geometry&&o.geometry!==geometry)o.geometry.dispose();});geometry.dispose();environment.dispose();Object.values(materials).forEach(m=>m.dispose());signMat.dispose();tex.dispose();renderer.dispose();renderer.forceContextLoss();renderer.domElement.remove();};
- },[reduced,progressRef,failed,filmFailed]);
- return <div className="architecture" aria-hidden="true"><img className="architectural-poster" src={assetURL('/art/headquarters-poster.webp')} alt=""/>{filmSource&&!filmFailed?<ArrivalFilm src={assetURL(filmSource)} progressRef={progressRef} reduced={reduced} onFailure={onFilmFailure}/>:!reduced&&!failed&&<div className="webgl-host" ref={host}/>}</div>;
+  return()=>{disposed=true;renderer.setAnimationLoop(null);observer.disconnect();ro.disconnect();window.removeEventListener('pointermove',move);renderer.domElement.removeEventListener('webglcontextlost',lose);const geometries=new Set(),textures=new Set([paving,cloth]);scene.traverse(o=>{if(o.geometry)geometries.add(o.geometry);});geometries.forEach(g=>g.dispose());Object.values(materials).forEach(m=>m.dispose());textures.forEach(t=>t.dispose());environment.dispose();renderer.dispose();renderer.forceContextLoss();renderer.domElement.remove();};
+ },[reduced,failed,filmFailed,progressRef]);
+ return <div className="architecture" aria-hidden="true"><img className="architectural-poster" src={assetURL('/art/headquarters-artistic.webp')} alt=""/>{filmSource&&!filmFailed?<ArrivalFilm src={assetURL(filmSource)} progressRef={progressRef} reduced={reduced} onFailure={onFilmFailure}/>:null}{!reduced&&!failed&&(!filmSource||filmFailed||!filmIncludesConsultant)?<div className="webgl-host" ref={host}/>:null}</div>;
 }

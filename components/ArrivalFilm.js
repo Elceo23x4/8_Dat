@@ -27,5 +27,5 @@ export default function ArrivalFilm({src,progressRef,reduced,onFailure}){
   return()=>{cancelAnimationFrame(frame);observer.disconnect();window.removeEventListener('pointermove',pointer);video.removeEventListener('loadeddata',loaded);video.removeEventListener('error',failedMedia);video.pause();};
  },[progressRef,reduced,failed,onFailure]);
  if(reduced||failed)return null;
- return <video ref={ref} className={`arrival-film ${ready?'is-ready':''}`} src={src} muted playsInline preload="auto" poster={assetURL('/art/headquarters-poster.webp')} onLoadedData={()=>setReady(true)} onError={()=>{setFailed(true);onFailure?.();}} aria-hidden="true"/>;
+ return <video ref={ref} className={`arrival-film ${ready?'is-ready':''}`} src={src} muted playsInline preload="auto" poster={assetURL('/art/headquarters-artistic.webp')} onLoadedData={()=>setReady(true)} onError={()=>{setFailed(true);onFailure?.();}} aria-hidden="true"/>;
 }

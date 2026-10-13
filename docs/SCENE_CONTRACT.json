@@ -1,71 +1,13 @@
 {
-  "name": "8dat-arrival",
-  "surface": "scroll-led website, decorative non-navigable Three.js scene",
-  "units": "metres",
-  "purpose": "Introduce a consultant arriving at a headquarters and transition into operational investigation",
-  "hero": {
-    "name": "headquarters",
-    "dimensions": [
-      18,
-      35,
-      11
-    ],
-    "origin": [
-      0,
-      0,
-      0
-    ]
-  },
-  "arrival": {
-    "clearWidth": 6,
-    "clearHeight": 4,
-    "depth": 11,
-    "destination": "backed illuminated lobby",
-    "doors": "two sliding glass leaves"
-  },
-  "symmetry": {
-    "architecture": "bilateral",
-    "exception": "production-camera offset and surrounding city rhythm"
-  },
-  "camera": {
-    "fov": 43,
-    "near": 0.1,
-    "far": 240,
-    "orbitRadians": 6.283185307179586,
-    "orbitRadius": 62,
-    "arrivalRadius": 3,
-    "establishingEyeHeight": 20,
-    "establishingLookHeight": 17
-  },
-  "input": {
-    "primary": "native document scroll",
-    "secondary": "bounded pointer parallax",
-    "keyboard": "native anchors and page scroll",
-    "touch": "native scroll"
-  },
-  "renderBudget": {
-    "pixelRatioMaximum": 1.5,
-    "shadowMaps": false,
-    "postProcessing": false,
-    "offscreenPause": true,
-    "hiddenTabPause": true,
-    "targetFrameRate": 60,
-    "measuredHardwareFrameRate": null,
-    "staticGeometry": "Instanced by material, one shared unit box",
-    "environment": "PMREM studio illumination",
-    "idleRender": "No draw when scroll, pointer and viewport are unchanged"
-  },
-  "paidProviders": {
-    "meshy": "not used",
-    "tripo": "not used",
-    "creditsAuthorized": 0
-  },
-  "review": {
-    "blender": "not used",
-    "gameDevCLI": "unavailable",
-    "humanFunctionApproval": null,
-    "humanFormApproval": null,
-    "humanRuntimeApproval": null
-  },
-  "fallback": "generated architectural poster with accessible HTML narrative; no mandatory WebGL"
+  "name":"8dat-earth-and-craft-arrival",
+  "surface":"decorative scroll-controlled Three.js scene",
+  "units":"metres",
+  "architecture":{"form":"tapered and twisted elliptical glass loft, swept crown, stepped terraces","bodyHeight":41.2,"maximumHalfWidth":7.8,"maximumHalfDepth":5.4,"backgroundRadius":86},
+  "entrance":{"doorPlaneZ":5.72,"openingWidth":3.6,"openingHeight":4.2,"doorTravelPerLeaf":1.72,"interior":"recessed illuminated lobby and reception counter"},
+  "camera":{"fovDesktop":43,"fovPortrait":51,"near":0.05,"far":260,"orbitRadiusMaximum":60,"entranceRadius":0.65,"orbitStartProgress":0.22,"orbitEndProgress":0.69,"eyeHeightAtEnd":1.7},
+  "character":{"heightApproximate":1.82,"strideDistance":1.12,"stanceFraction":0.62,"swingClearance":0.13,"contact":"fixed arc-distance foot targets","knees":"two-link inverse kinematics","source":"authored geometry, not a scan or motion-capture asset"},
+  "input":{"primary":"native document scroll","secondary":"bounded pointer parallax","keyboard":"native page scroll and anchors"},
+  "renderBudget":{"pixelRatioMaximum":1.25,"shadowMapResolution":1024,"staticGeometry":"merged or instanced by material","postProcessing":false,"offscreenPause":true,"hiddenTabPause":true,"idleDrawSkip":true,"hardwareFPS":null},
+  "providers":{"paidCalls":0,"meshy":"not invoked","tripo":"not invoked","blender":"unavailable","gameDevCLI":"unavailable"},
+  "fallback":"artistic architectural poster with accessible narrative"
 }
