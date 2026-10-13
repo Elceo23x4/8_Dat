@@ -3,7 +3,7 @@ import {useEffect,useRef,useState,useCallback} from 'react';
 import * as THREE from 'three';
 import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
 import {assetURL} from '../lib/assets.mjs';
-import {arrivalCamera,smoothRange} from '../lib/scene/locomotion.mjs';
+import {arrivalCamera,smoothRange,consultantProgress} from '../lib/scene/locomotion.mjs';
 import {createConsultant} from '../lib/scene/consultant.mjs';
 import {buildArchitecture} from '../lib/scene/architecture.mjs';
 import ArrivalFilm from './ArrivalFilm';
@@ -64,7 +64,7 @@ export default function Headquarters({progressRef,reduced}){
    dirty=false;lastProgress=p;lastPointer=pointer.current;
    el.style.opacity=architectureFilm?1:smoothRange(p,.035,.12);
    const rig=arrivalCamera(p,camera.aspect);camera.fov=rig.fov;camera.updateProjectionMatrix();camera.position.set(rig.x+pointer.current*.35,rig.y,rig.z);camera.lookAt(0,rig.lookY,0);
-   consultant.update(smoothRange(p,.06,.97));consultant.root.visible=p<.99;
+   consultant.update(consultantProgress(p));consultant.root.visible=p<.99;
    doorGroups.forEach((door,i)=>{const side=i===0?-1:1;door.position.x=side*(.9+rig.door*1.72);});
    renderer.render(scene,camera);
   });
