@@ -48,6 +48,7 @@ function Marquee({items,reverse=false}){return <div className={`platform-marquee
 export default function Story(){
  const root=useRef(null),heroProgress=useRef(0),[manualReduce,setManualReduce]=useState(false),[entered,setEntered]=useState(false),[status,setStatus]=useState(''),[currentWork,setCurrentWork]=useState(0),[mounted,setMounted]=useState(false),[mobileLayout,setMobileLayout]=useState(false),[osReduce,setOsReduce]=useState(false),[processDetail,setProcessDetail]=useState(null),[popover,setPopover]=useState({left:0,top:0}),[contactRevealed,setContactRevealed]=useState(false);
  const reduced=(mounted&&osReduce)||manualReduce;
+ useEffect(()=>{const update=()=>setEntered(scrollY>innerHeight*.04);update();window.addEventListener('scroll',update,{passive:true});return()=>window.removeEventListener('scroll',update);},[]);
  useEffect(()=>{const query=matchMedia('(prefers-reduced-motion: reduce)');const change=()=>setOsReduce(query.matches);change();query.addEventListener('change',change);return()=>query.removeEventListener('change',change);},[]);
  useEffect(()=>{setMounted(true);try{setManualReduce(localStorage.getItem('8dat-reduced')==='true');}catch{}},[]);
  useEffect(()=>{const query=matchMedia('(max-width:700px)');const change=()=>setMobileLayout(query.matches);change();query.addEventListener('change',change);return()=>query.removeEventListener('change',change);},[]);
@@ -55,7 +56,7 @@ export default function Story(){
  useEffect(()=>{
   gsap.registerPlugin(ScrollTrigger);
   const context=gsap.context(()=>{
-   ScrollTrigger.create({trigger:'.arrival',start:'top top',end:'bottom bottom',onUpdate:self=>{heroProgress.current=self.progress;setEntered(self.progress>.035);}});
+   ScrollTrigger.create({trigger:'.arrival',start:'top top',end:'bottom bottom',onUpdate:self=>{heroProgress.current=self.progress;}});
    ScrollTrigger.create({trigger:'.contact-scene',start:'top top',end:'bottom bottom',onUpdate:self=>setContactRevealed(self.progress>.52)});
    if(reduced){gsap.set('.process-step,.skill-chip,.banner-sheet,.file-deck',{autoAlpha:1});return;}
    const hero=gsap.timeline({scrollTrigger:{trigger:'.arrival',start:'top top',end:'bottom bottom',scrub:.5}});
