@@ -23,7 +23,7 @@ Native scrolling remains the main input. GSAP controls the long scene reveals; C
 
 `lib/scene/architecture.mjs` authors the curved/tapered glass loft, terraces, ribs, crown, lobby, hardware and beveled metal sign letters. Static surfaces are merged/instanced by material. `lib/scene/consultant.mjs` authors the figure’s torso, head, suit, arms, shoes and briefcase. `locomotion.mjs` defines the camera progression and stride targets.
 
-A stance foot keeps a constant arc-distance target while the body advances. A swing foot lifts up to 0.13 metres and lands continuously at the next target. Knees solve from hip to ankle; the shoe’s offset uses the planted tangent, so turning the body does not move the contact target. This is walking-contact animation, not a collision-enabled game engine.
+The consultant pauses outside during the architectural orbit and resumes as the doors open; his route stays clear of the reception desk. A stance foot keeps a constant arc-distance target while the body advances. A swing foot lifts up to 0.13 metres and lands continuously at the next target. Knees solve from hip to ankle; the shoe’s offset uses the planted tangent, so turning the body does not move the contact target. This is walking-contact animation, not a collision-enabled game engine.
 
 | Normalised arrival progress | Camera/action |
 | --- | --- |

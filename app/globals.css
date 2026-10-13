@@ -31,3 +31,9 @@ footer{padding:25px var(--gutter) 28px;background:#1b100c;overflow:hidden}.foote
 .reduced .contact-note{width:min(800px,100%);max-width:100%}
 
 .reduced .folder-tab{top:-25px!important;right:20px!important}
+
+/* Keep the physical room behind every hanging file in the perspective stack. */
+.room-backwall{transform:translateZ(-600px)}
+.room-floor{transform:translateZ(-600px) rotateX(64deg)}
+
+.file-deck{top:53%}.catalog-index{position:absolute;right:0;top:-82px;display:flex;gap:14px;z-index:40;transform:translateZ(160px)}.catalog-index .folder-tab{position:relative;top:auto;right:auto!important;border:0;cursor:pointer;height:42px}.catalog-index .folder-tab:hover,.catalog-index .folder-tab:focus-visible{background:#dfbb79;outline:2px solid #f0e1c8;outline-offset:4px}.reduced .catalog-index{display:none}@media(max-width:700px){.file-deck{top:53%}.catalog-index{top:-60px;gap:8px;transform:translateZ(65px)}.catalog-index .folder-tab{top:auto;min-width:55px;height:35px}.reduced .folder-entry:before{content:"";position:absolute;top:-20px;right:20px;width:70px;height:30px;background:#c3a470;border-radius:7px 7px 0 0}}
