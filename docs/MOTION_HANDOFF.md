@@ -1,92 +1,57 @@
-# 8 DAT portfolio — motion and media handoff
+# 8 DAT motion handoff — earth and craft
 
-Date: 11 October 2026. Repository: `Elceo23x4/8_Dat`.
+13 October 2026. This version implements the requested revision with a default Three.js arrival, independent paper/vector objects and the supplied portfolio screenshots. No finished video is required for the default scenes to function.
 
-The portfolio follows a consultant from arrival to investigation, working systems, creative direction, strategy, tools, marketing and a conversation. Its visual language uses coffee, warm paper, near-black and restrained turquoise. Burgundy stamps and muted ink accents are supporting colours.
+## Input and ownership
 
-## Implemented scene sequence
+Native scrolling remains the main input. GSAP controls the long scene reveals; CSS controls individual file/card hover and the fabric marquees; Three.js controls the camera, doors and male figure. The moving file-entry wrapper and its hoverable child are separate, as are the handwriting paths and the pencil. Reduced motion exposes content directly and stops long animations.
 
-| Chapter | Scene and motion | Input | Implementation |
-| --- | --- | --- | --- |
-| 01 Arrival | A glass headquarters and city, a full camera orbit, a consultant approaching from the left, sliding entry doors and camera approach into the lobby. The large wordmark shrinks and clears the scene. | Native scroll; restrained pointer parallax | Three.js architecture, layered SVG consultant, GSAP timeline |
-| 02 Investigation | Notes appear on an evidence board. Pins and connecting threads establish relationships. A hand approaches the requirements note, which enlarges to cover the viewport. | Scroll, reversible | Independent paper layers, SVG hand and threads |
-| 03 Workflow | Request, confirmation, invoice/payment, fulfilment, records and delivery appear in order. A package moves toward dispatch; the truck arrives and leaves. | Scroll, reversible | Semantic HTML process, vector parcel/truck, GSAP |
-| 04 Creative | Identity, billboard, website, campaign and business playbook concepts have changing perspective. Desktop scroll carries all five cards through the scene. Touch layouts retain swipe; arrow buttons work in both modes. | Scroll, horizontal swipe, buttons, keyboard | CSS perspective, GSAP desktop pin and native mobile scroll-snap |
-| 05 Deliverables | A rope-bound square parcel with a retro stamp separates into four panels. Strategy, brand, technology and operations emerge underneath. | Scroll, reversible | Four separately animated panels, ropes and stamp |
-| 06 Tools | A metallic bucket tips and shifts left while tool labels pour right. Individual chips respond to hover. | Scroll and pointer | Layered SVG bucket, GSAP spill, Motion hover |
-| 07 Marketing | Research → attention → personal selling → acquisition → delivery → learning. Thread connections and sequential cards show the campaign as a system. | Scroll | HTML cards with SVG network |
-| 08 Contact | A retro telephone shakes, its receiver and base separate, and a worn-paper contact note appears. The form prepares a WhatsApp brief. | Scroll; form input | Independent phone parts and contact form |
-| Footer | Oversized 8 DAT letters react individually; a turquoise watercolour-like light follows the pointer inside the wordmark. | Pointer, keyboard links | Motion letter animation and CSS masked radial colour |
-
-The illustrative process and gallery are demonstrations, not claims of completed client projects or measured outcomes. Marketing copy deliberately avoids presenting assumptions about all Nigerian customers as established facts.
-
-## Cinematic media still to produce
-
-The arrival has a generated architectural poster at `public/art/headquarters-poster.webp`, a video indicator, a live procedural 3D option and an optional scroll-scrubbed film adapter. No finished cinematic video is included. The procedural renderer does not reproduce every detail of the generated architectural poster; the poster is the realism target for film production.
-
-The consultant and hand are vector illustration layers. A fully photorealistic walking character, cloth simulation and hand-to-paper interaction require dedicated animation production; those are not represented as finished character rigs in this PR.
-
-### Arrival film brief
-
-- Produce a 12–16 second, silent, continuous architectural shot. Use the supplied poster as the lighting/material direction. Export 1920×1080 landscape first, with a separately framed portrait variant if later required.
-- Keep architecture rigid and coherent. Avoid drifting window grids, sliding floors, changing signs, extra doors or deforming buildings. Do not burn copy, navigation or the website wordmark into footage.
-- Keep the consultant out of the architectural clip when retaining the SVG consultant layer. For a realistic character-inclusive film, use `arrival-with-consultant.mp4`; the build automatically hides the vector stand-in only after the video loads. Failed media restores the illustrated scene.
-- The opening is an establishing frame, followed by a controlled full orbit, then a front approach to the entrance. Door opening must happen before crossing the threshold. End on the interior paper palette to support the evidence-board transition.
-- Treat this as a previsualisation brief. A coherent 360° architectural orbit may need a modelled scene and conventional 3D rendering; a single image-to-video pass cannot be assumed to preserve unseen building geometry.
-
-| Normalised scroll | Intended frame/action |
+| Scene | Motion |
 | --- | --- |
-| 0.00–0.08 | Establish the city/headquarters; central 8 DAT wordmark has priority. |
-| 0.08–0.30 | Consultant walks in from the left; the wordmark recedes; the scene establishes depth. |
-| 0.30–0.62 | Complete the orbit and settle toward the entrance. |
-| 0.62–0.84 | Move closer to the front door. Consultant nears the threshold. |
-| 0.84–0.94 | Open the door; move through it; retire the consultant layer. |
-| 0.94–1.00 | Resolve into the interior paper tone and crossfade into investigation. |
+| Arrival | Artistic city poster establishes the scene; the live tower and grounded male appear, the camera completes a full orbit, then approaches and crosses an opening glass portal. The wordmark recedes and the coffee interior transition arrives. |
+| Investigation | Papers land first; connecting threads draw between their pin locations. Printed requirements fade, the paper enlarges into a readable viewport sheet, and a pencil traces the four handwritten points. |
+| Operation | Request, confirmation, invoice, fulfilment, records and delivery appear sequentially. Hover/focus opens a pasted detail note clamped within the paper. A kraft envelope drops into the van before dispatch. |
+| Creative studies | Five composed artworks advance with desktop scroll and remain directly scrollable on touch. No presentation numbering, repeated ticket logo or generic instruction captions. |
+| Deliverables | Perforated paper stamp and braided jute retire; four grained kraft panels part, exposing richer strategy/brand/technology/operations content. |
+| Skills | The metal bucket tips clockwise, shifts left and pours chips to the right. Its brand mark follows the surface’s curved baseline and etched shading. |
+| Portfolio | A metal drawer advances into the room and exits the view; the supplied Liahona images appear as hanging files. Their catalog tabs, clips and hover/focus depth remain interactive; click or keyboard activation opens a full image view. |
+| Marketing | Fabric banners unroll behind their text with travelling lower rollers, grommets and sewn edges. Opposed tilted marquees carry marketing platforms and tools. |
+| Contact | The telephone owns the full viewport first, shakes and separates, then reveals the contact note. The form is inert until revealed. Clicking the phone or using Contact us can go directly to the form. |
+| Footer | Per-letter liquid color on hover, with a small displacement and solid readable fallback. No pointer-position spotlight or hide-on-hover behavior. |
 
-The current procedural camera completes its full orbit during the first 62% of hero scroll, then approaches the lobby. For a film, time-remap the exported sequence to the table above if the film's orbit begins later. No mouse-led camera movement should be baked into footage: the film has one authored camera path. The film adapter adds a bounded cursor compositing transform (±5px horizontal, ±3px vertical) with 2% overscan; do not bake a second pointer effect into the film.
+## Arrival geometry and walking
 
-### Installation of the film
+`lib/scene/architecture.mjs` authors the curved/tapered glass loft, terraces, ribs, crown, lobby, hardware and beveled metal sign letters. Static surfaces are merged/instanced by material. `lib/scene/consultant.mjs` authors the figure’s torso, head, suit, arms, shoes and briefcase. `locomotion.mjs` defines the camera progression and stride targets.
 
-1. Add the approved file as `public/media/arrival.webm` or `public/media/arrival.mp4`.
-2. The build detects `arrival-with-consultant.mp4` first (and hides the vector stand-in after loading), then `arrival.mp4`, then `arrival.webm`. For another filename, set `NEXT_PUBLIC_ARRIVAL_VIDEO=/media/your-film.mp4`.
-3. Commit the file. The existing Pages workflow rebuilds it. The film replaces the Three.js layer; missing or undecodable media recovers to the live scene and poster. The video is silent, inline and scroll-seeked, without timed autoplay.
-4. Match the first film frame to the poster and inspect the 0%, 25%, 62%, 88% and 100% scroll positions on desktop and mobile.
-5. Use short keyframe intervals for seeking. Prefer an appropriately compressed 1080p file under 25 MB, ideally below 8 MB; measure actual decoding/seek latency on phones. An MP4 export using a short GOP and a front-loaded metadata atom is a useful alternative when WebM seeking underperforms.
-6. For reduced motion, show the poster and keep the narrative readable. Missing or invalid media must leave the poster in place.
+The consultant pauses outside during the architectural orbit and resumes as the doors open; his route stays clear of the reception desk. A stance foot keeps a constant arc-distance target while the body advances. A swing foot lifts up to 0.13 metres and lands continuously at the next target. Knees solve from hip to ankle; the shoe’s offset uses the planted tangent, so turning the body does not move the contact target. This is walking-contact animation, not a collision-enabled game engine.
 
-`ArrivalFilm.js` only accepts a configured local `/media/…mp4` or `/media/…webm` path. It maps normalised hero progress to clip time, avoids seeking while an earlier seek is in flight, pauses work offscreen and stops its loop on cleanup.
+| Normalised arrival progress | Camera/action |
+| --- | --- |
+| 0–0.12 | Poster-to-scene establishing blend, low street view and consultant approach. |
+| 0.12–0.26 | Camera rises and widens from street scale to architectural scale. |
+| 0.22–0.69 | Full 360-degree orbit, within the clear foreground ring. |
+| 0.70–0.94 | Return to the front portal and approach; the doors open during 0.85–0.94. |
+| 0.94–1.00 | Camera enters the lobby, at a final 1.7 metre eye height, then transitions to the investigation wall. |
 
-### Optional later realistic overlays
+The exact constants are in `docs/SCENE_CONTRACT.json`. Human visual acceptance, real-device FPS and software-renderer evidence are separate; no universal 60 FPS is inferred.
 
-| Layer | Production direction | Runtime rule |
-| --- | --- | --- |
-| Consultant | Side-walking loop with natural foot contact; coffee suit, pale shirt, restrained turquoise tie; neutral three-quarter perspective. | Preserve a clean alpha channel; animate position separately; include it in `arrival-with-consultant.mp4` to automatically replace the current consultant visually. |
-| Hand | A right hand approaches a pinned note, grips its upper corner and pulls it toward camera. Separate hand and paper when possible. | Align grip and paper pivot; keep headings/typesetting as HTML. |
-| Bucket | PBR brushed-metal bucket with complete handle and lip; spill direction left to right. | Keep bucket and tool labels independent; labels stay HTML for readability. |
-| Telephone | Coffee/black rotary phone; receiver, base and cord separable. | The shake and separation are visual metaphors, with no damaging-flash effect or audio requirement. |
+## Optional film production
 
-The remaining scenes already use separately controlled vector and DOM objects. They do not require videos to function.
+The revised poster is `public/art/headquarters-artistic.webp`. It is an art/lighting direction, not a claim that the procedural model matches every architectural detail.
 
-## Motion ownership and accessibility
+For a cinematic replacement, commit either:
 
-GSAP owns scene-scale scroll transforms. Motion owns chip and footer-letter hover effects. Three.js owns the camera and architecture. The animation libraries do not write transforms to the same object. Native scrolling is preserved; no scroll-jacking or forced wheel interception is installed.
+- `public/media/arrival-with-consultant.mp4`: a complete shot including the person; it replaces the rendered arrival.
+- `public/media/arrival.mp4` or `arrival.webm`: architecture only; the Three.js person and contact-shadow overlay stay on top. Match the same camera path and floor scale so foot contact aligns with the footage.
 
-The system reduced-motion setting and a persistent manual toggle disable the long pinned motion sequence. The reduced layout exposes the deliverables directly and avoids the WebGL scene. All navigation, gallery buttons and form fields are real HTML controls, with a skip link, labels and visible focus states.
+Use the table above as the shot timing. Keep the camera path continuous, window grids coherent and doors open before crossing. Do not bake in interface text or cursor movement. The adapter maps scroll progress to clip time and adds only ±5px/±3px pointer compositing.
 
-Mobile workflow becomes a normal-flow, two-column process so descriptions can remain readable. Other sections use dedicated mobile spacing and layouts. Scene timelines rebuild when crossing the mobile breakpoint.
+Prefer 12–16 seconds, 1920×1080, H.264/yuv420p, fast-start metadata, frequent keyframes and a file below 25 MB, ideally below 8 MB. Keep the action safe in a portrait crop. Commit the file; the build detects it automatically. A different filename can be configured with `NEXT_PUBLIC_ARRIVAL_VIDEO=/media/your-film.mp4`.
 
-## Contact configuration
+The media adapter checks both native events and current ready/error state, avoiding early-event races. Invalid media recovers to the authored scene; reduced motion uses the poster. It seeks forward and backward without timed autoplay and pauses work offscreen/hidden.
 
-The confirmed WhatsApp recipient is +234 911 571 6254. X, Instagram and TikTok use @8dat_work. These defaults are committed and can be overridden through `.env.example`. No physical street address or unverified mailbox is invented: the location reads Nigeria with remote collaboration. A business address and contact email are optional public build-time overrides. The form never sends automatically: it opens a prepared brief in WhatsApp for the visitor to review and send. There is no website-side storage.
+## Contact and supplied references
 
-## Rendering evidence and media boundary
+The prepared WhatsApp brief still targets +234 911 571 6254; X, Instagram and TikTok use @8dat_work. The visible phone number and Nigeria sentence were removed as requested. No message is sent automatically by the website.
 
-The live WebGL2 scene has been exercised in GitHub’s Chromium browser runner using software rendering. Screenshots and full journey checks are uploaded as browser evidence in the PR workflow. The renderer instances static architecture by material, uses one shared box geometry, pauses offscreen/hidden and skips drawing when scroll, pointer and viewport are unchanged. Hardware frame rate varies by device; no universal 60 FPS guarantee is claimed.
-
-The remaining production asset is the cinematic arrival film. The generated poster provides its realism target; the live architectural model and vector character are authored illustrations. No Blender approval, paid mesh generation or photorealistic character rig is claimed. The other chapters function with their existing independent SVG and HTML layers.
-
-## Reference interpretation
-
-The attached Lagos Life teardown supplies a blueprint, not confirmed source code. This build takes its warm paper, editorial wordmark, tactile stamps/tickets, layered illustrations, explicit motion control and accessible native carousel techniques. It uses original 8 DAT content and assets. It does not reuse the Lagos Life brand, partner advertisements or imply exact font/easing parity.
-
-Implementation documentation consulted: [Next.js static exports](https://nextjs.org/docs/app/guides/static-exports), [GSAP ScrollTrigger](https://gsap.com/docs/v3/Plugins/ScrollTrigger/), and [Three.js renderer](https://threejs.org/docs/pages/WebGLRenderer.html).
+The four attached Liahona screenshots are used as supplied portfolio images. The five new gallery artworks are illustrative creative studies; no fictional project result, testimonial or client metric is asserted. Font licences and full image prompts/provenance are in `docs/licenses` and `docs/asset-provenance.json`.

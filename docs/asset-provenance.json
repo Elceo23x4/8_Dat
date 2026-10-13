@@ -1,7 +1,87 @@
 {
-  "generator": "Built-in image_gen",
-  "asset": "public/art/headquarters-poster.webp",
-  "sha256": "071009a375f153658ef0d64257fd815d29567e042cb6ebdfc572ab07a249dfd8",
-  "usage": "Architectural realism target, arrival video poster, no-WebGL and reduced-motion fallback",
-  "prompt": "Use case: stylized-concept. Asset type: cinematic architectural website video poster, widescreen 16:9. A sophisticated realistic 3D architectural visualization of a modern glass skyscraper creative agency headquarters on a clean tower-lined contemporary Chinese city street. Warm coffee and pale cream architectural tones, near-black metal frames, restrained turquoise accents in glass. Ground-level three-quarter camera, complete headquarters centered toward the right, beautiful glass entry portal and visible welcoming lobby beyond. Stone pavement leading from bottom left to door. Early morning overcast editorial light, physically believable reflections, architectural depth, subtly tactile film grain. No people, no cars, no typography, no logos, no watermark, no UI. Leave upper-left negative space for HTML editorial headlines. High-end international creative studio quality, avoid neon cyberpunk. Intended as future image-to-video first frame; all architecture must remain coherent."
+  "date": "2026-10-13",
+  "assets": [
+    {
+      "path": "public/art/headquarters-artistic.webp",
+      "source": "OpenAI built-in ImageGen",
+      "prompt": "Use case: stylized-concept. Asset type: premium creative-agency website hero background, wide landscape cinematic architectural composition. Create an original artistic city of office buildings, near photorealistic architectural visualization but distinctly sculptural and authored. A signature central skyscraper on the RIGHT half has an elegant gently twisting elliptical glass body, staggered white ceramic terraces, aluminum ribs, a split crown and warm old-gold metal detailing. Surrounding creative skyline includes stepped monoliths, a sweeping arch and asymmetric rounded office towers, never a generic collection of rectangular boxes. Ground-level grand glass entrance, realistic deep lobby, polished black stone plaza and warm dark coffee-brown mineral pavement, subtle wet reflections, fine atmospheric depth. Main palette WHITE, brushed ALUMINUM, BLACK, DARK COFFEE BROWN, GLASS and restrained OLD GOLD. Dawn light glowing along edges against a rich charcoal sky; tactile stone, real seams and coherent engineering. Large calm darker negative space on LEFT for editorial website text; street viewpoint, central entrance visible, architecture occupies center/right. High-end art directed architectural model photography, sophisticated, vibrant contrast and refined materials. No people, no words, no logos, no signage text, no watermarks, no neon, no turquoise city, no generic cyberpunk. Landscape 16:9.",
+      "processing": "WebP export; generated source retained",
+      "use": "Artistic architectural direction",
+      "sha256": "738b6bb94ac4e06f1f23d951493072391f9ec79b5eaf711bfc740afc973a1f7a"
+    },
+    {
+      "path": "public/art/study-identity.webp",
+      "source": "OpenAI built-in ImageGen",
+      "prompt": "Use case: product-mockup. Landscape premium branding art for a creative agency portfolio. A tactile close-up editorial still life of a dark coffee-brown debossed business-card box, cream letterpress cards with one large sculptural numeral 8 as brand mark, gold foil edges, a deep blue-green fabric swatch, brick-red pencil and embossed black paper laid out asymmetrically on warm travertine. Refined brand identity art direction, magazine-grade macro photography, oblique perspective, beautiful warm directional shadows, real grain and ink impressions, vibrant earthly materials. Some cards partly overlap, intentional composition, no mockup grid. Only exact mark '8' and small 'DAT' if text appears, no random copy, no numbers except brand 8, no watermarks. Wider than tall, artwork fills the frame.",
+      "processing": "WebP export; generated source retained",
+      "use": "Illustrative creative-direction concept",
+      "sha256": "3bd2467c62584d39606884cbb57f20e3a196396ce9356f9d6058081da1ee6a38"
+    },
+    {
+      "path": "public/art/study-billboard.webp",
+      "source": "OpenAI built-in ImageGen",
+      "prompt": "Use case: ads-marketing. Landscape art-directed photograph of a REAL monumental roadside billboard mounted on engineered black steel supports in a contemporary African city street at blue hour. The campaign is beautifully typeset in huge ivory condensed editorial letters on dark coffee with a brick red block and small gold foil-like light: exact headline 'MAKE YOUR MOVE.' Small exact brand '8 DAT'. Billboard surface shows subtle printed texture, mounting bolts, depth and realistic front illumination. Camera three-quarter low angle, entire billboard visible, recognizable public-space scale, wet asphalt, blurred car lights, sculptural white office architecture behind. Deep blue-green dusk, coffee black, old gold, warm ivory and restrained brick red. Genuine compositional photography for an elite agency portfolio, bold and vibrant with generous breathing room; no stock mockup template, no generic flat rectangle floating in space, no extra text, no watermark.",
+      "processing": "WebP export; generated source retained",
+      "use": "Illustrative creative-direction concept",
+      "sha256": "87ccfe36a61dcf07166bc48f39ae87168c62c9006f80bce18d4cfc919c8bfbf4"
+    },
+    {
+      "path": "public/art/study-website.webp",
+      "source": "OpenAI built-in ImageGen",
+      "prompt": "Use case: product-mockup. Wide landscape premium digital-experience portfolio photograph, editorial composition. An impeccably rendered aluminum desktop display and a slim smartphone at a natural three-quarter angle on a dark coffee travertine desk. Screens show an art-directed sculptural architecture creative-consultancy website, ivory editorial typography on black, one compact gold '8 DAT' mark, hero photograph of white organic modern buildings, deep blue-green interaction panels and a restrained brick-red action button. Plausible genuine device geometry and coherent interface, elegant layered depth, warm gold studio sidelighting, textured stone, a metal pen and a small folded paper study subtly in frame. Sharp sophisticated composition with vibrant contrast, no random chart UI, no stock template, no invented metric numbers, no watermark, no tiny gibberish text. Near photographic realism.",
+      "processing": "WebP export; generated source retained",
+      "use": "Illustrative creative-direction concept",
+      "sha256": "ce752a948741862284bbabc1ccbe965804d8e23bbb78509e0a48f6333912bf44"
+    },
+    {
+      "path": "public/art/study-campaign.webp",
+      "source": "OpenAI built-in ImageGen",
+      "prompt": "Use case: ads-marketing. Wide landscape premium creative-campaign portfolio artwork, photographed editorial installation. Three large loose printed posters partially curl and overlap in a dark blue-green studio, mounted with metal bulldog clips and lit warmly from the side. Each uses different strong editorial typographic composition: exact short phrases 'MAKE IT MATTER', 'A BETTER CHAPTER', 'MOVE WITH PURPOSE'. Blend giant stretched ivory type, brick-red highlights, old-gold foil, deep coffee grounds and a sculptural monochrome photograph. Printed linen paper fibers, true curled edges, rich shadows, tangible advertising-design craft, bold vibrant energy, beautifully balanced magazine-grade image, not a flat social media template or random grid, no numbering, no watermark. A small brushed metal clip can be in foreground.",
+      "processing": "WebP export; generated source retained",
+      "use": "Illustrative creative-direction concept",
+      "sha256": "f06a83b91bfd5dbd6f6ef2cc5abcebd27275ea93b5c88b7a59184bb6a9d2816e"
+    },
+    {
+      "path": "public/art/study-documents.webp",
+      "source": "OpenAI built-in ImageGen",
+      "prompt": "Use case: product-mockup. Wide landscape editorial still-life photograph of a beautifully designed real business operations playbook: substantial deep blue-green linen-bound hardcover book embossed in old-gold letters exact title 'THE WAY WE WORK', beside open ivory printed pages with clean diagrams and subtle manuscript notes, a folded dark kraft envelope, brushed aluminum bulldog clips, a coffee-brown leather pencil case. Magazine layout craft rather than plain Word pages: rich margins, editorial typography, brick red annotations and fine line illustrations, no prominent numbers, no mockup grids, no watermarks, no invented company testimonials. Arrange asymmetrically with overlapped layers on dark coffee walnut, angled camera, tactile woven cloth, debossed ink, curled paper and gold light, vibrant premium materials and physically realistic shadows.",
+      "processing": "WebP export; generated source retained",
+      "use": "Illustrative creative-direction concept",
+      "sha256": "38b6b3b899da6382504d1f13f2d3d92094b9b6ceab58776e870c769c847a4dcd"
+    }
+  ],
+  "suppliedReferences": [
+    {
+      "uploadedName": "liaho1(1).png",
+      "path": "public/art/liahona-hero.webp",
+      "sha256": "c6c69fb0eddeef2391bbad6ebe9b07500e4a06d1c3762cc2cc1b15180983001d"
+    },
+    {
+      "uploadedName": "liaho5.png",
+      "path": "public/art/liahona-land.webp",
+      "sha256": "8c47a93e6a1aaaa46a0178ceb3cff1c898414a28908d0bc9174dcf66f4797f4c"
+    },
+    {
+      "uploadedName": "liaho7(1).png",
+      "path": "public/art/liahona-gis.webp",
+      "sha256": "1f69dccc3e209b55f29aaeda46c2b444414754fffe4edd718e998f4e7e28ec3f"
+    },
+    {
+      "uploadedName": "liaho8(1).png",
+      "path": "public/art/liahona-footer.webp",
+      "sha256": "4b9a72f98b25e2f23239cb5ccd153a32f87203ee7258905cf426e6c6863bce12"
+    }
+  ],
+  "models": {
+    "source": "Authored Three.js geometry",
+    "paidProviderInvocations": 0,
+    "character": "Articulated anatomical construction, two-link knees and planted arc-distance foot targets",
+    "architecture": "Lofted/tapered glass, swept crown wings, extruded font signage and sliding doors"
+  },
+  "fonts": [
+    "Bodoni Moda",
+    "Barlow Condensed",
+    "Caveat",
+    "IBM Plex Mono"
+  ]
 }
