@@ -23,12 +23,13 @@
         740
       ]
     ],
-    "softwareWebGLRun": 38402116766,
-    "verifiedCommit": "6790bd56899f27e965efc7e9862581b841db4bc4",
+    "softwareWebGLRun": 38405897635,
+    "verifiedCommit": "937b7a5cc985871f4c55f28c693dc325f864cf31",
     "result": "passed",
     "journeyTests": 3,
     "mediaTests": 2,
-    "finalChecks": "https://github.com/Elceo23x4/8_Dat/pull/3/checks"
+    "finalChecks": "https://github.com/Elceo23x4/8_Dat/pull/3/checks",
+    "inspectedCaptureRun": 38405540117
   },
   "contact": {
     "recipient": "2349115716254",

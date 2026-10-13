@@ -1,13 +1,68 @@
 {
-  "name":"8dat-earth-and-craft-arrival",
-  "surface":"decorative scroll-controlled Three.js scene",
-  "units":"metres",
-  "architecture":{"form":"tapered and twisted elliptical glass loft, swept crown, stepped terraces","bodyHeight":41.2,"maximumHalfWidth":7.8,"maximumHalfDepth":5.4,"backgroundRadius":86},
-  "entrance":{"doorPlaneZ":5.72,"openingWidth":3.6,"openingHeight":4.2,"doorTravelPerLeaf":1.72,"interior":"recessed illuminated lobby and reception counter"},
-  "camera":{"fovDesktop":43,"fovPortrait":51,"near":0.05,"far":260,"orbitRadiusMaximum":60,"entranceRadius":0.65,"orbitStartProgress":0.22,"orbitEndProgress":0.69,"eyeHeightAtEnd":1.7},
-  "character":{"heightApproximate":1.82,"strideDistance":1.12,"stanceFraction":0.62,"swingClearance":0.13,"contact":"fixed arc-distance foot targets","knees":"two-link inverse kinematics","source":"authored geometry, not a scan or motion-capture asset"},
-  "input":{"primary":"native document scroll","secondary":"bounded pointer parallax","keyboard":"native page scroll and anchors"},
-  "renderBudget":{"pixelRatioMaximum":1.25,"shadowMapResolution":1024,"staticGeometry":"merged or instanced by material","postProcessing":false,"offscreenPause":true,"hiddenTabPause":true,"idleDrawSkip":true,"hardwareFPS":null},
-  "providers":{"paidCalls":0,"meshy":"not invoked","tripo":"not invoked","blender":"unavailable","gameDevCLI":"unavailable"},
-  "fallback":"artistic architectural poster with accessible narrative"
+  "name": "8dat-earth-and-craft-arrival",
+  "surface": "decorative scroll-controlled Three.js scene",
+  "units": "metres",
+  "architecture": {
+    "form": "tapered and twisted elliptical glass loft, swept crown, stepped terraces",
+    "bodyHeight": 41.2,
+    "maximumHalfWidth": 7.8,
+    "maximumHalfDepth": 5.4,
+    "backgroundRadius": 86
+  },
+  "entrance": {
+    "doorPlaneZ": 5.72,
+    "openingWidth": 3.6,
+    "openingHeight": 4.2,
+    "doorTravelPerLeaf": 1.72,
+    "interior": "recessed illuminated lobby and reception counter"
+  },
+  "camera": {
+    "fovDesktop": 43,
+    "fovPortrait": 51,
+    "near": 0.05,
+    "far": 260,
+    "orbitRadiusMaximum": 74,
+    "entranceRadius": 0.65,
+    "orbitStartProgress": 0.22,
+    "orbitEndProgress": 0.69,
+    "eyeHeightAtEnd": 1.7,
+    "orbitEyeHeight": 24.5,
+    "orbitLookHeight": 22.2
+  },
+  "character": {
+    "heightApproximate": 1.82,
+    "strideDistance": 1.12,
+    "stanceFraction": 0.62,
+    "swingClearance": 0.13,
+    "contact": "fixed arc-distance foot targets",
+    "knees": "two-link inverse kinematics",
+    "source": "authored geometry, not a scan or motion-capture asset",
+    "waitOutsideProgress": [
+      0.69,
+      0.88
+    ]
+  },
+  "input": {
+    "primary": "native document scroll",
+    "secondary": "bounded pointer parallax",
+    "keyboard": "native page scroll and anchors"
+  },
+  "renderBudget": {
+    "pixelRatioMaximum": 1.25,
+    "shadowMapResolution": 1024,
+    "staticGeometry": "merged or instanced by material",
+    "postProcessing": false,
+    "offscreenPause": true,
+    "hiddenTabPause": true,
+    "idleDrawSkip": true,
+    "hardwareFPS": null
+  },
+  "providers": {
+    "paidCalls": 0,
+    "meshy": "not invoked",
+    "tripo": "not invoked",
+    "blender": "unavailable",
+    "gameDevCLI": "unavailable"
+  },
+  "fallback": "artistic architectural poster with accessible narrative"
 }

@@ -13,6 +13,8 @@ PR #3 builds on merged PR #2. The revision replaces the city art, visual palette
 
 Screenshot and trace evidence is in each quality run’s `browser-evidence` artifact. CI uses software WebGL; local browser verification uses a GPU-disabled fallback.
 
+Final implementation run [38405897635](https://github.com/Elceo23x4/8_Dat/actions/runs/38405897635) passed at commit `937b7a5cc985871f4c55f28c693dc325f864cf31`, including the navigation correction, eight unit tests, three WebGL journeys and two media-adapter tests. A final documentation-only commit records this receipt and the revised 74-metre orbit contract.
+
 ## Evidence boundaries
 
 The tower and male are editable authored Three.js geometry with PBR materials, not scanned assets or a photoreal human rig. The photographic poster establishes art direction; the procedural scene has its own visual character. Planted-foot animation is tested; it is not a collision-enabled game simulation. Software rendering does not establish a universal 60 FPS result.
